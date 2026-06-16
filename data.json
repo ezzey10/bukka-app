@@ -1,0 +1,48 @@
+{
+  "restaurants": [
+    {
+      "id": "res-1",
+      "name": "The Spice House",
+      "category": "indian",
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&auto=format&fit=crop&q=60",
+      "description": "Authentic Indian cuisine with a modern twist.",
+      "minimumOrder": 15.00,
+      "menu": [
+  { 
+    "id": "m1", 
+    "name": "Chicken Tikka Masala", 
+    "price": 15.99, 
+    "available": true,
+    "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60"
+  }
+]
+    },
+    {
+      "id": "res-2",
+      "name": "El Camino Taqueria",
+      "category": "mexican",
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&auto=format&fit=crop&q=60",
+      "description": "Street-style tacos, fresh guacamole, and spicy salsas.",
+      "minimumOrder": 10.00,
+      "menu": [
+        { "id": "m3", "name": "Al Pastor Tacos (3)", "price": 12.50, "available": true },
+        { "id": "m4", "name": "Cheesy Quesadilla", "price": 9.00, "available": false }
+      ]
+    },
+    {
+      "id": "res-3",
+      "name": "Luigi's Oven",
+      "category": "italian",
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=60",
+      "description": "Wood-fired pizzas and handmade pasta.",
+      "minimumOrder": 20.00,
+      "menu": [
+        { "id": "m5", "name": "Classic Margherita Pizza", "price": 18.00, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m6", "name": "Spaghetti Carbonara", "price": 16.50, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" }
+      ]
+    }
+  ]
+}
