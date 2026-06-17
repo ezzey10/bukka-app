@@ -32,6 +32,7 @@ class Store {
       const meal = restaurant.menu.find(m => String(m.id) === String(mealId));
       if (meal) {
         meal.available = !meal.available; 
+
         console.log(`Updated ${meal.name} availability to: ${meal.available}`);
       }
     }
@@ -240,6 +241,8 @@ class VendorView {
     this.vendorTitle.textContent = restaurant.name;
 
     // Build the menu with Tailwind Toggle Switches
+
+
     const menuHtml = restaurant.menu.map(meal => `
       <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <div>
@@ -273,6 +276,61 @@ class VendorView {
   }
 }
 
+// ==========================================
+// 6. THE RIDER VIEW
+// ==========================================
+class RiderView {
+  constructor() {
+    this.riderViewEl = document.getElementById('rider-view');
+    this.statusBtn = document.getElementById('rider-status-btn');
+    
+    // We track what stage of the delivery the rider is on
+    this.statusIndex = 0; 
+    
+    // The different states of our button
+    this.statuses = [
+      { text: "Accept Delivery", color: "bg-[#DC143C]" },
+      { text: "Confirm Pickup", color: "bg-blue-500" },
+      { text: "Mark as Delivered", color: "bg-green-500" },
+      { text: "Waiting for orders...", color: "bg-gray-300" }
+    ];
+  }
+
+  init() {
+    this.statusBtn.addEventListener('click', () => {
+      // If we haven't reached the final "Waiting" state, advance to the next step!
+      if (this.statusIndex < 3) {
+        this.statusIndex++;
+        this.updateBtnUI();
+      }
+    });
+  }
+
+  updateBtnUI() {
+    const current = this.statuses[this.statusIndex];
+    
+    // Update the text
+    this.statusBtn.textContent = current.text;
+    
+    // Strip old background colors and add the new one
+    this.statusBtn.className = `w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 shadow-lg active:scale-95 ${current.color}`;
+    
+    // If delivery is complete, disable the button
+    if (this.statusIndex === 3) {
+      this.statusBtn.disabled = true;
+      this.statusBtn.classList.remove('active:scale-95', 'shadow-lg');
+    }
+  }
+
+  show() {
+    this.riderViewEl.classList.remove('hidden');
+  }
+
+  hide() {
+    this.riderViewEl.classList.add('hidden');
+  }
+}
+
 
 // THE MANAGER
 class App {
@@ -282,14 +340,13 @@ class App {
     
     this.customerView = new CustomerView(this.store, (id) => this.showMenuScreen(id));
     this.menuView = new MenuView(this.store, () => this.showHomeScreen(), (mealId) => this.handleAddToCart(mealId));
-    
-    // NEW: Initialize Vendor View
     this.vendorView = new VendorView(this.store, (resId, mealId) => this.store.toggleMealAvailability(resId, mealId));
     
-    this.currentRestaurantId = null; 
+    // NEW: Initialize Rider View
+    this.riderView = new RiderView();
     
-    // NEW: Grab the navigation buttons
-    this.navBtns = document.querySelectorAll('nav a');
+    this.currentRestaurantId = null; 
+    this.navBtns = document.querySelectorAll('nav a, header a');
   }
 
   async init() {
@@ -297,28 +354,39 @@ class App {
       await this.store.loadData();
       this.customerView.init();
       this.menuView.init();
-      this.vendorView.init(); // NEW: Start Vendor listeners
+      this.vendorView.init();
+      this.riderView.init(); // NEW: Start Rider listeners
 
       const initialData = this.store.filterRestaurants('all', '');
       this.customerView.render(initialData);
 
-      // NEW: Listen to the bottom navigation bar
+      // UPDATED NAVIGATION LOGIC
       this.navBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-          e.preventDefault();
           const target = btn.getAttribute('href');
           
-          if (target === '#home' || target === '#order') {
-            this.showHomeScreen();
-            this.vendorView.hide();
-          } else if (target === '#settings') { 
-            // We'll use the "Settings" tab for our Vendor view for now!
+          // Only take over the click if it's one of our app screens
+          if (['#home', '#order', '#vendor', '#rider'].includes(target)) {
+            e.preventDefault();
+            
+            // 1. Hide every single screen to reset the view
             this.customerView.homeScreen.classList.add('hidden');
             this.menuView.hide();
-            this.vendorView.show();
+            this.vendorView.hide();
+            this.riderView.hide();
+
+            // 2. Show only the screen they clicked
+            if (target === '#home' || target === '#order') {
+              this.showHomeScreen();
+            } else if (target === '#vendor') { 
+              this.vendorView.show();
+            } else if (target === '#rider') {
+              this.riderView.show();
+            }
           }
         });
       });
+      
       
     } catch (error) {
       console.error("Error Loading Data:", error);
