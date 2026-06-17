@@ -1,5 +1,3 @@
-
-
 class Store {
   constructor() {
     this.restaurants = [];
@@ -10,12 +8,10 @@ class Store {
       const response = await fetch('./data.json');
       const data = await response.json();
       this.restaurants = data.restaurants;
-    
     } catch (error) {
       console.error("Error loading the restaurant data:", error);
     }
   }
-
 
   getRestaurants() {
     return this.restaurants;
@@ -26,47 +22,44 @@ class Store {
       const matchesCategory = category === 'all' || restaurant.category === category;
       const matchesSearch = restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) 
       || restaurant.menu.some(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
-      
       return matchesCategory && matchesSearch;
     });
   }
+
+  toggleMealAvailability(restaurantId, mealId) {
+    const restaurant = this.restaurants.find(res => String(res.id) === String(restaurantId));
+    if (restaurant) {
+      const meal = restaurant.menu.find(m => String(m.id) === String(mealId));
+      if (meal) {
+        meal.available = !meal.available; 
+        console.log(`Updated ${meal.name} availability to: ${meal.available}`);
+      }
+    }
+  }
 }
-
-
-
-
-
-
 
 class CustomerView {
   constructor(store, onCardClick) {
     this.store = store;
     this.onCardClick = onCardClick;
-    
     this.gridContainer = document.getElementById('restuarants');
     this.searchInput = document.getElementById('search');
     this.restuarantCategory = document.querySelectorAll('input[name="restaurant"]');
-    this.homeScreen = document.getElementById('home-client');
-    console.log(this.restuarantCategory);
-    console.log(this.gridContainer);
+    
+    // FIX: Targeting the new wrapper so the Menu doesn't get hidden!
+    this.homeScreen = document.getElementById('home-content');
   }
 
   init() {
-    this.searchInput.addEventListener('input', () => {
-      this.handleFilterChange();
+    this.searchInput.addEventListener('input', () => this.handleFilterChange());
+
+    this.restuarantCategory.forEach(radio => {
+      radio.addEventListener('change', () => this.handleFilterChange());
     });
 
-    // 2. Listen for clicks on the category radio buttons
-    this.restuarantCategory.forEach(radio => {
-      radio.addEventListener('change', () => {
-        this.handleFilterChange();
-      });
-    });
     this.gridContainer.addEventListener('click', (e) => {
-      // Look for the closest <article> tag to where the user clicked
       const card = e.target.closest('article');
       if (card) {
-        // Grab the ID and send it back to the App Manager
         const restaurantId = card.getAttribute('data-id');
         this.onCardClick(restaurantId); 
       }
@@ -80,9 +73,7 @@ class CustomerView {
     this.render(filteredData);
   }
 
-  // Take an array of restaurants and paint them onto the screen
   render(restaurants) {
-    // If no restaurants match the search/category, show a clean empty state
     if (restaurants.length === 0) {
       this.gridContainer.innerHTML = `
         <div class="col-span-full flex flex-col items-center justify-center py-12 text-gray-400">
@@ -91,7 +82,6 @@ class CustomerView {
         </div>`;
       return;
     }
-
     
     const html = restaurants.map(res => `
       <article class="relative bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow duration-300 group" data-id="${res.id}">
@@ -109,15 +99,12 @@ class CustomerView {
   }
 }
 
-
-
 // MENU PAGE
-
 class MenuView {
-  constructor(store, onBackClick) {
+  constructor(store, onBackClick, onAddToCart) {
     this.store = store;
     this.onBackClick = onBackClick; 
-
+    this.onAddToCart = onAddToCart; // NEW: Save the cart logic
     
     this.menuViewEl = document.getElementById('menu');
     this.heroImg = document.getElementById('menu-hero-img');
@@ -133,42 +120,48 @@ class MenuView {
       this.hide();
       this.onBackClick(); 
     });
+
+    // NEW: Listen for clicks on the add-to-cart buttons
+    this.itemsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.add-to-cart-btn');
+      if (btn) {
+        const mealId = btn.getAttribute('data-meal-id');
+        this.onAddToCart(mealId); 
+      }
+    });
   }
 
   show(restaurantId) {
     const restaurants = this.store.getRestaurants();
-    const restaurant = restaurants.find(res => res.id === restaurantId);
+    const restaurant = restaurants.find(res => String(res.id) === String(restaurantId));
 
     if (!restaurant) return;
 
-    
     this.heroImg.src = restaurant.image;
     this.title.textContent = restaurant.name;
     this.rating.innerHTML = `<i class="fas fa-star text-[#DC143C]"></i> ${restaurant.rating}`;
     this.desc.textContent = restaurant.description;
 
-    // 3. Loop through the menu and generate the food cards
-    const menuHtml = restaurant.menu.map(meal => `<div class="flex justify-between items-center bg-white rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow h-32 overflow-hidden"> 
-  <div class="w-1/4 h-full shrink-0"> 
-    <img class="w-full h-full object-cover object-center" src="${meal.img}" alt="${meal.name}"> 
-  </div> 
-
-  <div class="p-4 flex-1 min-w-0"> 
-    <h4 class="text-lg font-bold text-gray-800 mb-1 truncate">${meal.name}</h4> 
-    <p class="text-sm text-gray-500 mb-2 line-clamp-2">Fresh mozzarella, sweet tomato sauce, and basil.</p> 
-    <span class="text-[#DC143C] font-extrabold text-lg">$${meal.price.toFixed(2)}</span> 
-  </div> 
-  
-  <div class="pr-4 shrink-0">
-    <button class="w-12 h-12 bg-gray-100 hover:bg-[#DC143C] text-gray-600 hover:text-white rounded-full flex items-center justify-center shadow-sm transition-all duration-300"> 
-      <i class="fas fa-plus"></i> 
-    </button> 
-  </div>
-</div>`).join('');
+    // FIX: Added data-meal-id and add-to-cart-btn class to the button!
+    const menuHtml = restaurant.menu.map(meal => `
+      <div class="flex justify-between items-center bg-white rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow h-32 overflow-hidden"> 
+        <div class="w-1/4 h-full shrink-0"> 
+          <img class="w-full h-full object-cover object-center" src="${meal.img || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'}" alt="${meal.name}"> 
+        </div> 
+        <div class="p-4 flex-1 min-w-0"> 
+          <h4 class="text-lg font-bold text-gray-800 mb-1 truncate">${meal.name}</h4> 
+          <p class="text-sm text-gray-500 mb-2 line-clamp-2">Fresh ingredients.</p> 
+          <span class="text-[#DC143C] font-extrabold text-lg">$${meal.price.toFixed(2)}</span> 
+        </div> 
+        <div class="pr-4 shrink-0">
+          <button data-meal-id="${meal.id}" class="add-to-cart-btn w-12 h-12 bg-gray-100 hover:bg-[#DC143C] text-gray-600 hover:text-white rounded-full flex items-center justify-center shadow-sm transition-all duration-300"> 
+            <i class="fas fa-plus"></i> 
+          </button> 
+        </div>
+      </div>
+    `).join('');
 
     this.itemsContainer.innerHTML = menuHtml;
-
-    
     this.menuViewEl.classList.remove('hidden');
     window.scrollTo(0, 0);
   }
@@ -178,14 +171,125 @@ class MenuView {
   }
 }
 
+// NEW: THE CART CLASS
+class Cart {
+  constructor() {
+    this.items = []; 
+    this.cartBadge = document.getElementById('cart-badge');
+  }
+
+  add(meal) {
+    const existingItem = this.items.find(item => item.id === meal.id);
+    if (existingItem) {
+      existingItem.quantity += 1; 
+    } else {
+      this.items.push({ ...meal, quantity: 1 }); 
+    }
+    this.updateUI();
+  }
+
+  updateUI() {
+    const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+    if (totalItems > 0) {
+      this.cartBadge.textContent = totalItems;
+      this.cartBadge.classList.remove('hidden');
+      
+      // Pop animation
+      this.cartBadge.classList.add('scale-125');
+      setTimeout(() => this.cartBadge.classList.remove('scale-125'), 200);
+    }
+  }
+}
 
 
-//Load the App
+// ==========================================
+// 5. THE VENDOR VIEW
+// ==========================================
+class VendorView {
+  constructor(store, onToggleMeal) {
+    this.store = store;
+    this.onToggleMeal = onToggleMeal; // Function to run when a switch is flipped
+    
+    this.vendorViewEl = document.getElementById('vendor-view');
+    this.vendorTitle = document.getElementById('vendor-title');
+    this.itemsContainer = document.getElementById('vendor-items-container');
+    
+    // For this demo, we will hardcode the vendor to manage "Luigi's Oven" (res-3)
+    this.vendorId = "res-3"; 
+  }
+
+  init() {
+    // Listen for clicks on the toggle switches
+    this.itemsContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('toggle-checkbox')) {
+        const mealId = e.target.getAttribute('data-meal-id');
+        this.onToggleMeal(this.vendorId, mealId);
+        
+        // Re-render the list to update the visual labels (Available vs Sold Out)
+        this.render(); 
+      }
+    });
+  }
+
+  render() {
+    const restaurants = this.store.getRestaurants();
+    const restaurant = restaurants.find(res => String(res.id) === String(this.vendorId));
+
+    if (!restaurant) return;
+
+    this.vendorTitle.textContent = restaurant.name;
+
+    // Build the menu with Tailwind Toggle Switches
+    const menuHtml = restaurant.menu.map(meal => `
+      <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+        <div>
+          <h4 class="text-lg font-bold text-gray-800">${meal.name}</h4>
+          <p class="text-[#DC143C] font-bold">$${meal.price.toFixed(2)}</p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-medium ${meal.available ? 'text-green-600' : 'text-gray-400'}">
+            ${meal.available ? 'Available' : 'Sold Out'}
+          </span>
+          
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer toggle-checkbox" data-meal-id="${meal.id}" ${meal.available ? 'checked' : ''}>
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#DC143C]"></div>
+          </label>
+        </div>
+      </div>
+    `).join('');
+
+    this.itemsContainer.innerHTML = menuHtml;
+  }
+
+  show() {
+    this.render(); // Ensure data is fresh before showing
+    this.vendorViewEl.classList.remove('hidden');
+  }
+
+  hide() {
+    this.vendorViewEl.classList.add('hidden');
+  }
+}
+
+
+// THE MANAGER
 class App {
   constructor() {
     this.store = new Store();
+    this.cart = new Cart();
+    
     this.customerView = new CustomerView(this.store, (id) => this.showMenuScreen(id));
-    this.menuView = new MenuView(this.store, () => this.showHomeScreen());
+    this.menuView = new MenuView(this.store, () => this.showHomeScreen(), (mealId) => this.handleAddToCart(mealId));
+    
+    // NEW: Initialize Vendor View
+    this.vendorView = new VendorView(this.store, (resId, mealId) => this.store.toggleMealAvailability(resId, mealId));
+    
+    this.currentRestaurantId = null; 
+    
+    // NEW: Grab the navigation buttons
+    this.navBtns = document.querySelectorAll('nav a');
   }
 
   async init() {
@@ -193,29 +297,57 @@ class App {
       await this.store.loadData();
       this.customerView.init();
       this.menuView.init();
+      this.vendorView.init(); // NEW: Start Vendor listeners
 
-      
       const initialData = this.store.filterRestaurants('all', '');
       this.customerView.render(initialData);
+
+      // NEW: Listen to the bottom navigation bar
+      this.navBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = btn.getAttribute('href');
+          
+          if (target === '#home' || target === '#order') {
+            this.showHomeScreen();
+            this.vendorView.hide();
+          } else if (target === '#settings') { 
+            // We'll use the "Settings" tab for our Vendor view for now!
+            this.customerView.homeScreen.classList.add('hidden');
+            this.menuView.hide();
+            this.vendorView.show();
+          }
+        });
+      });
       
     } catch (error) {
       console.error("Error Loading Data:", error);
     }
   }
-
+  
+  // ... Keep showMenuScreen, showHomeScreen, and handleAddToCart exactly the same!
 
   showMenuScreen(restaurantId) {
-    // Hide the welcome text and grid
+    this.currentRestaurantId = restaurantId;
     this.customerView.homeScreen.classList.add('hidden');
-    // Show the menu for the specific restaurant
     this.menuView.show(restaurantId);
   }
 
   showHomeScreen() {
-    // Hide the menu
     this.menuView.hide();
-    // Reveal the welcome text and grid
     this.customerView.homeScreen.classList.remove('hidden');
+  }
+
+  handleAddToCart(mealId) {
+    const restaurants = this.store.getRestaurants();
+    const currentRes = restaurants.find(res => String(res.id) === String(this.currentRestaurantId));
+    
+    if (currentRes) {
+      const meal = currentRes.menu.find(m => String(m.id) === String(mealId));
+      if (meal) {
+        this.cart.add(meal);
+      }
+    }
   }
 }
 
