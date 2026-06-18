@@ -109,10 +109,14 @@
     <div id="vendor-view" class="hidden mt-24 px-4 pb-24 w-full animate-fade-in">
       <div class="max-w-4xl mx-auto">
         
+        
         <div class="bg-gray-900 rounded-2xl p-6 text-white mb-8 shadow-lg flex justify-between items-center">
           <div>
             <span class="text-[#FF3B63] text-sm font-bold tracking-wider uppercase mb-1 block">Vendor Portal</span>
-            <h2 id="vendor-title" class="text-2xl md:text-3xl font-bold">Luigi's Oven</h2>
+            
+            <select id="vendor-selector" class="bg-gray-800 text-white text-xl font-bold border border-gray-700 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#DC143C] cursor-pointer">
+            </select>
+            
           </div>
           <div class="text-right">
             <span class="text-gray-400 text-sm">Active Orders</span>
@@ -130,19 +134,14 @@
 
 
     <!-- Rider -->
-     <!-- ========================================== -->
-    <!-- THE RIDER DASHBOARD (Hidden by default) -->
-    <!-- ========================================== -->
     <div id="rider-view" class="hidden mt-24 px-4 pb-24 w-full animate-fade-in">
       <div class="max-w-md mx-auto">
-        
         <!-- Header -->
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold text-gray-900">Delivery Tasks</h2>
           <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold animate-pulse">Online</span>
         </div>
 
-        <!-- Active Order Card -->
         <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
           <div class="bg-gray-50 p-4 border-b border-gray-100 flex justify-between items-center">
             <span class="text-sm font-bold text-gray-600">Order #BK-8492</span>
@@ -150,7 +149,6 @@
           </div>
           
           <div class="p-6">
-            <!-- Route Info (The Line connecting points) -->
             <div class="relative pl-6 mb-6">
               <!-- Vertical Line -->
               <div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-gray-200"></div>
@@ -163,7 +161,7 @@
                 <p class="text-sm text-gray-500">Main Campus Food Court</p>
               </div>
               
-              <!-- Dropoff Point -->
+             
               <div class="relative">
                 <div class="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-green-500 border-4 border-white shadow-sm"></div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Dropoff</p>
@@ -172,7 +170,7 @@
               </div>
             </div>
 
-            <!-- Interactive Status Button -->
+      
             <button id="rider-status-btn" class="w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 shadow-lg bg-[#DC143C] active:scale-95">
               Accept Delivery
             </button>

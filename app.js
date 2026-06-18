@@ -204,45 +204,57 @@ class Cart {
 
 
 // ==========================================
-// 5. THE VENDOR VIEW
+// 5. THE VENDOR VIEW 
 // ==========================================
 class VendorView {
   constructor(store, onToggleMeal) {
     this.store = store;
-    this.onToggleMeal = onToggleMeal; // Function to run when a switch is flipped
+    this.onToggleMeal = onToggleMeal;
     
     this.vendorViewEl = document.getElementById('vendor-view');
-    this.vendorTitle = document.getElementById('vendor-title');
+    this.vendorSelector = document.getElementById('vendor-selector'); // Grab the new dropdown
     this.itemsContainer = document.getElementById('vendor-items-container');
     
-    // For this demo, we will hardcode the vendor to manage "Luigi's Oven" (res-3)
-    this.vendorId = "res-3"; 
+    this.vendorId = null; 
   }
 
   init() {
-    // Listen for clicks on the toggle switches
+    // 1. Listen for clicks on the toggle switches
     this.itemsContainer.addEventListener('change', (e) => {
       if (e.target.classList.contains('toggle-checkbox')) {
         const mealId = e.target.getAttribute('data-meal-id');
         this.onToggleMeal(this.vendorId, mealId);
-        
-        // Re-render the list to update the visual labels (Available vs Sold Out)
         this.render(); 
       }
+    });
+
+    
+    this.vendorSelector.addEventListener('change', (e) => {
+      this.vendorId = e.target.value; 
+      this.render(); 
     });
   }
 
   render() {
     const restaurants = this.store.getRestaurants();
-    const restaurant = restaurants.find(res => String(res.id) === String(this.vendorId));
 
+    
+    if (!this.vendorId && restaurants.length > 0) {
+      this.vendorId = String(restaurants[0].id);
+    }
+
+    // 1. Build the dropdown options dynamically
+    this.vendorSelector.innerHTML = restaurants.map(res => `
+      <option value="${res.id}" ${String(res.id) === this.vendorId ? 'selected' : ''}>
+        ${res.name}
+      </option>
+    `).join('');
+
+    // 2. Find the menu for the currently selected restaurant
+    const restaurant = restaurants.find(res => String(res.id) === this.vendorId);
     if (!restaurant) return;
 
-    this.vendorTitle.textContent = restaurant.name;
-
-    // Build the menu with Tailwind Toggle Switches
-
-
+    // 3. Build the menu toggle list
     const menuHtml = restaurant.menu.map(meal => `
       <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <div>
@@ -267,7 +279,7 @@ class VendorView {
   }
 
   show() {
-    this.render(); // Ensure data is fresh before showing
+    this.render(); 
     this.vendorViewEl.classList.remove('hidden');
   }
 
@@ -298,7 +310,7 @@ class RiderView {
 
   init() {
     this.statusBtn.addEventListener('click', () => {
-      // If we haven't reached the final "Waiting" state, advance to the next step!
+      
       if (this.statusIndex < 3) {
         this.statusIndex++;
         this.updateBtnUI();
@@ -312,10 +324,10 @@ class RiderView {
     // Update the text
     this.statusBtn.textContent = current.text;
     
-    // Strip old background colors and add the new one
+    
     this.statusBtn.className = `w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 shadow-lg active:scale-95 ${current.color}`;
     
-    // If delivery is complete, disable the button
+    
     if (this.statusIndex === 3) {
       this.statusBtn.disabled = true;
       this.statusBtn.classList.remove('active:scale-95', 'shadow-lg');
@@ -341,8 +353,6 @@ class App {
     this.customerView = new CustomerView(this.store, (id) => this.showMenuScreen(id));
     this.menuView = new MenuView(this.store, () => this.showHomeScreen(), (mealId) => this.handleAddToCart(mealId));
     this.vendorView = new VendorView(this.store, (resId, mealId) => this.store.toggleMealAvailability(resId, mealId));
-    
-    // NEW: Initialize Rider View
     this.riderView = new RiderView();
     
     this.currentRestaurantId = null; 
@@ -355,7 +365,7 @@ class App {
       this.customerView.init();
       this.menuView.init();
       this.vendorView.init();
-      this.riderView.init(); // NEW: Start Rider listeners
+      this.riderView.init(); 
 
       const initialData = this.store.filterRestaurants('all', '');
       this.customerView.render(initialData);
@@ -365,7 +375,7 @@ class App {
         btn.addEventListener('click', (e) => {
           const target = btn.getAttribute('href');
           
-          // Only take over the click if it's one of our app screens
+          
           if (['#home', '#order', '#vendor', '#rider'].includes(target)) {
             e.preventDefault();
             
@@ -393,7 +403,6 @@ class App {
     }
   }
   
-  // ... Keep showMenuScreen, showHomeScreen, and handleAddToCart exactly the same!
 
   showMenuScreen(restaurantId) {
     this.currentRestaurantId = restaurantId;
