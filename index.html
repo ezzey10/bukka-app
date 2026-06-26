@@ -9,9 +9,204 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
   <title>Bukka</title>
+
+  <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-container:hover .animate-marquee {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
 </head>
 
 <body class="text-[#DC143C] font-sans">
+
+  <section id="landing-page" class="bg-white w-full z-50 relative animate-fade-in overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-white z-0"></div>
+    <button id="get-started-btn" class="absolute top-3 md:top-10 right-26 bg-[#DC143C] text-white shadow-md px-8 py-4 rounded-xl font-bold text-sm hover:bg-[#b01030] transition-all shadow-lg shadow-red-500/30 transform active:scale-95 w-full sm:w-auto">
+          Get Started
+        </button>  
+    <div class="hidden md:block w-lg absolute -right-50 top-50 " >
+       <img src="assets/hero-main.webp" 
+     alt="food" 
+     class=" w-full object-cover" />
+    </div>
+    <div class="min-h-screen px-4 md:px-0 relative z-10 max-w-4xl mx-auto flex flex-col items-center border-b border-[#DC143C]/10">
+      <div class="px-4 py-8 pt-25 md:py-32 flex flex-col items-center text-center">
+      <span class="bg-[#DC143C]/10 text-[#DC143C] px-4 py-1.5 rounded-full text-sm font-extrabold tracking-widest uppercase mb-8 inline-block shadow-sm">
+        Welcome to Bukka
+      </span>
+      
+      <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
+        Amazing Food, <br/> Delivered <span class="text-[#DC143C] bg-clip-text">Fast.</span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-gray-500 mb-4 md:mb-10 max-w-2xl leading-relaxed">
+        The all-in-one platform connecting students with the best local vendors and fastest delivery riders on campus. No queues, just good food.
+      </p>
+      </div>
+      <form id="hero-search" class="w-full max-w-4xl mx-auto mt-8 relative z-20">
+        <div class="flex flex-col md:flex-row items-center bg-white rounded-3xl md:rounded-2xl shadow-2xl p-2 border border-gray-100 transition-all focus-within:ring-4 focus-within:ring-[#DC143C]/20 focus-within:border-[#DC143C]/50">
+          <div class="flex items-center flex-1 px-6 py-4 md:py-2 w-full border-b md:border-b-0 md:border-r border-gray-200">
+            <i class="fas fa-location-dot text-[#DC143C] text-xl mr-4 opacity-80"></i>
+            <div class="flex flex-col w-full text-left">
+              <label for="search-where" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Where</label>
+              <input id="search-where" type="text" placeholder="Hostel, campus block, or address..." class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate" autocomplete="off">
+            </div>
+          </div>
+          <div class="flex items-center flex-1 px-6 py-4 md:py-2 w-full">
+            <i class="fas fa-search text-[#DC143C] text-xl mr-4 opacity-80"></i>
+            <div class="flex flex-col w-full text-left">
+              <label for="search-what" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">What</label>
+              <input id="search-what" type="text" placeholder="Cuisine, vendor, or meal..." class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate" autocomplete="off">
+            </div>
+          </div>
+          <button type="button" id="hero-search-btn" class="w-full md:w-auto bg-[#DC143C] text-white px-10 py-4 md:py-4 rounded-2xl md:rounded-2xl font-bold text-lg hover:bg-[#b01030] transition-all transform active:scale-95 shadow-lg mt-2 md:mt-0 flex items-center justify-center gap-2">
+            <span>Search</span>
+            <i class="fas fa-arrow-right md:hidden"></i>
+          </button>
+          
+        </div>
+      </form>
+      
+
+      <div class="flex my-8 md:my-16 pt-8 border-t border-gray-100 gap-8 text-gray-400 text-sm font-semibold justify-center w-full">
+        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-motorcycle text-gray-300"></i><span>Fast Delivery</span> </span>
+        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-store text-gray-300"></i><span>Local Vendors</span> </span>
+        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-wallet text-gray-300"></i><span>Five-Star Service</span> </span>
+      </div>
+    </div>
+
+    <hr class="border-gray-100 border shadow-md my-12 w-full" />
+    <section class="flex justify-center p-4 w-full mx-auto my-12 bg-white shadow-lg border">
+      <div id="cuisines-container" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"></div>
+    </section>
+    <section class="p-8 w-full max-w-6xl mx-auto my-16 relative z-10 bg-white shadow-md rounded-3xl border border-gray-100 backdrop-blur-md">
+      <div class="flex justify-between items-end mb-6 px-2">
+        <div>
+          <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900">Top Rated Vendors</h2>
+          <p class="text-gray-500 mt-1">The most popular spots on campus right now.</p>
+        </div>
+        <button class="text-[#DC143C] font-bold hover:underline hidden md:block">See all</button>
+      </div>
+
+      <div id="featured-vendors-container" class="flex flex-col md:flex-row gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing px-2 pt-2">
+        </div>
+    </section>
+    <div class="w-full bg-white relative z-10 py-24 border-t border-gray-100">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">How <span class="text-[#DC143C]">Bukka</span> Works</h2>
+          <p class="text-gray-500 text-lg">Your favorite campus meals, delivered in three simple steps.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div class="flex flex-col items-center group">
+            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+              <i class="fas fa-location-dot"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">1. Set your location</h3>
+            <p class="text-gray-500 leading-relaxed">Tell us which hostel or block you are in, and we will show you the best vendors currently open nearby.</p>
+          </div>
+          <div class="flex flex-col items-center group">
+            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+              <i class="fas fa-burger"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">2. Choose your meal</h3>
+            <p class="text-gray-500 leading-relaxed">Browse hundreds of menus, from local Bukka joints to premium campus restaurants.</p>
+          </div>
+          <div class="flex flex-col items-center group">
+            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+              <i class="fas fa-motorcycle"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">3. Fast Delivery</h3>
+            <p class="text-gray-500 leading-relaxed">Our student riders will pick up your order and deliver it straight to your door in minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex overflow-hidden bg-[#dc143c] text-white py-4 mt-16 marquee-container relative z-10 border-y border-gray-200">
+      <div class="flex whitespace-nowrap animate-marquee items-center gap-12 px-6">
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <svg width="35" height="24" class="text-green-500 mr-3" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 41"><path d="M20 0s-.834 17.324-20 20c0 0 16.453.315 20 20 0 0 1.13-17.018 20-20 0 0-17.93-2.523-20-20Z" fill="currentColor"></path></svg>
+          Fresh market picks
+        </span>
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-bell"></i> &nbsp; Live order updates
+        </span>
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-headset"></i> &nbsp; 24/7 Priority Support
+        </span>
+      </div>
+      <div class="flex whitespace-nowrap animate-marquee items-center gap-12 px-6">
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-user-plus"></i> &nbsp; Quick & easy onboarding
+        </span>
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-leaf"></i> &nbsp; Fresh market picks
+        </span>
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-bell"></i> &nbsp; Live order updates
+        </span>
+        <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-headset"></i> &nbsp; 24/7 Priority Support
+        </span>
+      </div>
+    </div>
+
+    <div class="w-full bg-gray-50 py-24 relative z-10">
+      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 opacity-5">
+            <i class="fas fa-motorcycle text-9xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">Ride with Bukka</h3>
+          <p class="text-gray-500 mb-8 max-w-sm">Turn your free time into extra cash. Set your own schedule and deliver food around campus.</p>
+          <button class="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition-colors">Apply to Ride</button>
+        </div>
+
+        <div class="bg-[#DC143C] rounded-3xl p-10 shadow-sm text-white relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 opacity-10">
+            <i class="fas fa-store text-9xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold mb-4">Become a Partner</h3>
+          <p class="text-red-100 mb-8 max-w-sm">Reach hundreds of hungry students every day. We handle the logistics, you focus on the food.</p>
+          <button class="bg-white text-[#DC143C] px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">Register Vendor</button>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="w-full bg-gray-900 text-white py-12 relative z-10">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0 text-center md:text-left">
+          <h2 class="text-2xl font-bold mb-2">Bukka.</h2>
+          <p class="text-gray-400 text-sm">© 2026 Ezzey Solutions. All rights reserved.</p>
+        </div>
+        <div class="flex gap-6 text-gray-400 text-2xl">
+          <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+<div id="dash" class="hidden">
+
+
   <nav class="md:w-[15%] text-center bg-white/70 backdrop-blur-md md:text-left w-full md:flex md:flex-col md:h-full fixed p-4 z-20 bottom-0">
     <h1 class="hidden md:flex text-2xl font-bold mb-8 hover:text-[#FF3B63]">Bukka</h1>
     <ul class="flex justify-around items-center h-full md:flex-col md:space-y-6 md:items-start md:h-auto w-full md:text-gray-700">
@@ -44,9 +239,9 @@
     </header>
 
     <div id="home-content" class="mt-24 px-4">
-      <h3 class="text-2xl font-bold mb-4">Welcome Client</h3>
+      <h3 class="text-2xl font-bold mb-4">Welcome Ezzey</h3>
       <p class="text-gray-700 mb-6">Your one-stop destination for delicious meals and quick service. Explore our menu, place your order, and enjoy a delightful dining experience with us!</p>
-      <!-- Restuarant Tab -->
+      
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <h4 class="mb-4 text-xl font-bold">Popular Restaurants Near You</h4>
         <ul class="flex gap-4 text-gray-700">
@@ -179,8 +374,9 @@
 
       </div>
     </div>
+  
   </main>
-
+</div>
   <script src="app.js"></script>
 </body>
 </html>

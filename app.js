@@ -1,6 +1,7 @@
 class Store {
   constructor() {
     this.restaurants = [];
+    this.cuisines = []; 
   }
 
   async loadData() {
@@ -8,6 +9,7 @@ class Store {
       const response = await fetch('./data.json');
       const data = await response.json();
       this.restaurants = data.restaurants;
+      this.cuisines = data.cuisines || [];
     } catch (error) {
       console.error("Error loading the restaurant data:", error);
     }
@@ -15,6 +17,9 @@ class Store {
 
   getRestaurants() {
     return this.restaurants;
+  }
+  getCuisines() {
+    return this.cuisines;
   }
 
   filterRestaurants(category, searchTerm = '') {
@@ -97,6 +102,48 @@ class CustomerView {
     `).join('');
 
     this.gridContainer.innerHTML = html;
+  }
+  
+  renderFeaturedRestaurants(restaurants) {
+    const container = document.getElementById('featured-vendors-container');
+    if (!container || restaurants.length === 0) return;
+
+    const featured = restaurants.slice(0, 6);
+
+    const html = featured.map(res => `
+      <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-2xl overflow-hidden snap-start shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group">
+        
+        <div class="relative h-48 overflow-hidden bg-gray-200">
+          <img src="${res.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+          
+          <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-[#DC143C] transition-colors shadow-sm cursor-pointer">
+            <i class="fas fa-heart"></i>
+          </div>
+          
+          <div class="absolute top-3 left-3 bg-[#DC143C] text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+            Top Rated
+          </div>
+        </div>
+
+        <div class="p-5 flex flex-col gap-2">
+          <div class="flex justify-between items-start">
+            <h3 class="font-bold text-xl text-gray-900 truncate pr-2">${res.name}</h3>
+            <div class="flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded-lg text-sm font-bold shrink-0">
+              <i class="fas fa-star text-xs"></i> 4.8
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-2 text-gray-500 text-sm font-medium mt-1">
+            <span class="flex items-center gap-1"><i class="fas fa-motorcycle text-gray-400"></i> 15-25 min</span>
+            <span class="w-1 h-1 bg-gray-300 rounded-full mx-1"></span>
+            <span class="flex items-center gap-1"><i class="fas fa-tag text-gray-400"></i> Delivery: Free</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Inject the HTML plus a tiny spacer at the end so the last card doesn't touch the edge
+    container.innerHTML = html + `<div class="min-w-[10px] md:min-w-[20px]"></div>`;
   }
 }
 
@@ -288,6 +335,27 @@ class VendorView {
   }
 }
 
+class CuisineView {
+  constructor(store) {
+    this.store = store;
+    this.cuisinesContainer = document.getElementById('cuisines-container');
+  }
+
+  render() {
+    const cuisines = this.store.getCuisines();
+    const html = cuisines.map(cuisine => `
+      <div class="relative min-w-[130px] md:min-w-[160px] hover:min-w-[180px] md:hover:min-w-[220px] h-36 md:h-44 rounded-2xl overflow-hidden snap-start group shadow-sm hover:shadow-xl transition-all duration-500 ease-out cursor-pointer" data-category="${cuisine.name.toLowerCase()}">
+        <img src="${cuisine.image}" alt="${cuisine.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <span class="absolute bottom-3 left-3 text-white font-bold text-base md:text-lg">${cuisine.name}</span>
+      </div>
+    `).join('');
+
+
+    this.cuisinesContainer.innerHTML = html + `<div class="min-w-[10px] md:min-w-[20px]"></div>`;
+  }
+}
+
 // ==========================================
 // 6. THE RIDER VIEW
 // ==========================================
@@ -366,9 +434,33 @@ class App {
       this.menuView.init();
       this.vendorView.init();
       this.riderView.init(); 
+      this.cuisineView = new CuisineView(this.store);
+      this.cuisineView.render();
 
       const initialData = this.store.filterRestaurants('all', '');
       this.customerView.render(initialData);
+
+      const landingPage = document.getElementById('landing-page');
+      const appContainer = document.getElementById('dash');
+      const heroSearchForm = document.getElementById('hero-search');
+      const getStartedBtn = document.getElementById('get-started-btn');
+
+      // When the user clicks "Get Started"
+      getStartedBtn.addEventListener('click', () => {
+        landingPage.classList.add('hidden');
+        landingPage.classList.remove('flex'); 
+        appContainer.classList.remove('hidden');
+        heroSearchForm.classList.add('hidden');
+        
+        this.showHomeScreen();
+      });
+      heroSearchForm.addEventListener('click', (e) => {
+        e.preventDefault();
+        appContainer.classList.remove('hidden');
+        landingPage.classList.add('hidden');
+        landingPage.classList.remove('flex');
+        this.showHomeScreen();
+      });
 
       // UPDATED NAVIGATION LOGIC
       this.navBtns.forEach(btn => {
@@ -396,6 +488,10 @@ class App {
           }
         });
       });
+
+      // 3. Featured Vendors on the landing page!
+      const allRestaurants = this.store.getRestaurants();
+      this.customerView.renderFeaturedRestaurants(allRestaurants);
       
       
     } catch (error) {

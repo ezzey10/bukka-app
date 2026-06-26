@@ -44,5 +44,12 @@
         { "id": "m6", "name": "Spaghetti Carbonara", "price": 16.50, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" }
       ]
     }
+  ],
+  "cuisines": [
+    { "id": "cuisine1", "name": "Italian", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine2", "name": "Mexican", "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine3", "name": "Indian", "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine4", "name": "American", "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine5", "name": "Asian", "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&auto=format&fit=crop&q=60" }
   ]
 }
