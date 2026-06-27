@@ -1,55 +1,221 @@
 {
+  "cuisines": [
+    { "id": "cuisine1", "name": "Rice Dishes", "image": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine2", "name": "Swallows", "image": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine3", "name": "Grills & Suya", "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine4", "name": "Fast Food", "image": "https://images.unsplash.com/photo-1615719413546-198b25453f85?w=400&auto=format&fit=crop&q=60" },
+    { "id": "cuisine5", "name": "Snacks", "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&auto=format&fit=crop&q=60" }
+  ],
   "restaurants": [
     {
       "id": "res-1",
-      "name": "The Spice House",
-      "category": "indian",
-      "rating": 4.5,
-      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&auto=format&fit=crop&q=60",
-      "description": "Authentic Indian cuisine with a modern twist.",
-      "minimumOrder": 15.00,
+      "name": "Bukka Hut",
+      "category": "swallows",
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&auto=format&fit=crop&q=60",
+      "description": "Authentic Nigerian homemade meals and local delicacies.",
+      "minimumOrder": 2000,
       "menu": [
-  { 
-    "id": "m1", 
-    "name": "Chicken Tikka Masala", 
-    "price": 15.99, 
-    "available": true,
-    "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60"
-  }
-]
+        { "id": "m1", "name": "Pounded Yam & Egusi Soup", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m2", "name": "Amala, Ewedu & Gbegiri", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m3", "name": "Eba & Ogbono Soup", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m4", "name": "Semovita & Edikaikong", "price": 3800, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m5", "name": "Fufu & Afang Soup", "price": 3800, "available": false, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m6", "name": "Assorted Meat Pepper Soup", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m7", "name": "Catfish Pepper Soup (Point & Kill)", "price": 6000, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m8", "name": "Extra Pounded Yam Wrap", "price": 800, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m9", "name": "Beef Portion (1 pc)", "price": 1000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m10", "name": "Goat Meat Portion", "price": 2000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" }
+      ]
     },
     {
       "id": "res-2",
-      "name": "El Camino Taqueria",
-      "category": "mexican",
-      "rating": 4.8,
-      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&auto=format&fit=crop&q=60",
-      "description": "Street-style tacos, fresh guacamole, and spicy salsas.",
-      "minimumOrder": 10.00,
+      "name": "The Place",
+      "category": "rice dishes",
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&auto=format&fit=crop&q=60",
+      "description": "Premium casual dining featuring the best party jollof in town.",
+      "minimumOrder": 2500,
       "menu": [
-        { "id": "m3", "name": "Al Pastor Tacos (3)", "price": 12.50, "available": true },
-        { "id": "m4", "name": "Cheesy Quesadilla", "price": 9.00, "available": false }
+        { "id": "m11", "name": "Smoky Party Jollof Rice", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m12", "name": "Special Fried Rice", "price": 2800, "available": true, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m13", "name": "Ofada Rice & Ayamase Sauce", "price": 4000, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m14", "name": "Coconut Rice", "price": 2800, "available": false, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m15", "name": "White Rice & Pepper Stew", "price": 2200, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m16", "name": "Fried Turkey Wing", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m17", "name": "BBQ Chicken Quarter", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m18", "name": "Fried Croaker Fish", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m19", "name": "Fried Plantain (Dodo)", "price": 800, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m20", "name": "Moi Moi (Leaf)", "price": 1000, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" }
       ]
     },
     {
       "id": "res-3",
-      "name": "Luigi's Oven",
-      "category": "italian",
-      "rating": 4.7,
-      "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=60",
-      "description": "Wood-fired pizzas and handmade pasta.",
-      "minimumOrder": 20.00,
+      "name": "Chicken Republic",
+      "category": "fast food",
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=500&auto=format&fit=crop&q=60",
+      "description": "Nigeria's favorite fried chicken and everyday value meals.",
+      "minimumOrder": 1500,
       "menu": [
-        { "id": "m5", "name": "Classic Margherita Pizza", "price": 18.00, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" },
-        { "id": "m6", "name": "Spaghetti Carbonara", "price": 16.50, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" }
+        { "id": "m21", "name": "Refuel Max (Rice & 1pc Chicken)", "price": 2800, "available": true, "img": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m22", "name": "Mega Express (Spaghetti & Chicken)", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m23", "name": "Spicy Fried Chicken (2pcs)", "price": 2400, "available": true, "img": "https://images.unsplash.com/photo-1569691899455-88464f6d3ab1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m24", "name": "Rotisserie Chicken (Half)", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m25", "name": "Chicken Pie", "price": 1000, "available": false, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m26", "name": "Meat Pie", "price": 1000, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m27", "name": "Citizens Meal (Burger & Fries)", "price": 4000, "available": true, "img": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m28", "name": "Spicy Zinger Burger", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m29", "name": "Portion of Chips (Fries)", "price": 1200, "available": true, "img": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m30", "name": "Chilled Coca-Cola 50cl", "price": 500, "available": true, "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-4",
+      "name": "Glover Court Suya",
+      "category": "grills & suya",
+      "rating": 4.9,
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60",
+      "description": "Legendary Lagos street grills, perfectly spiced and flame-roasted.",
+      "minimumOrder": 3000,
+      "menu": [
+        { "id": "m31", "name": "Spicy Beef Suya", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m32", "name": "Chicken Suya", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m33", "name": "Kidney Suya", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m34", "name": "Liver Suya", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m35", "name": "Chicken Gizzard Suya", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m36", "name": "Ram Suya (Premium)", "price": 5000, "available": false, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m37", "name": "Whole Grilled Croaker Fish", "price": 8500, "available": true, "img": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m38", "name": "Extra Yaji (Suya Spice) Pack", "price": 500, "available": true, "img": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m39", "name": "Masa (Rice Cake) 3pcs", "price": 1500, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m40", "name": "Onions & Cabbage Side", "price": 500, "available": true, "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-5",
+      "name": "Sweet Sensation",
+      "category": "snacks",
+      "rating": 4.2,
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=60",
+      "description": "Freshly baked pastries, cakes, and quick Nigerian bites.",
+      "minimumOrder": 1500,
+      "menu": [
+        { "id": "m41", "name": "Classic Meat Pie", "price": 1000, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m42", "name": "Chicken Pie", "price": 1200, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m43", "name": "Jumbo Sausage Roll", "price": 800, "available": true, "img": "https://images.unsplash.com/photo-1588882522513-333e6a72e811?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m44", "name": "Scotch Egg", "price": 900, "available": true, "img": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m45", "name": "Puff Puff (Portion)", "price": 500, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m46", "name": "Jam Doughnut", "price": 800, "available": false, "img": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m47", "name": "Beef Burger", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m48", "name": "Fish Roll", "price": 700, "available": true, "img": "https://images.unsplash.com/photo-1588882522513-333e6a72e811?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m49", "name": "Slice of Red Velvet Cake", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m50", "name": "Fresh Orange Juice", "price": 1500, "available": true, "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-6",
+      "name": "Yellow Chilli",
+      "category": "swallows",
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=500&auto=format&fit=crop&q=60",
+      "description": "Upscale Nigerian dining known for iconic seafood dishes.",
+      "minimumOrder": 5000,
+      "menu": [
+        { "id": "m51", "name": "Seafood Okro Soup", "price": 9500, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m52", "name": "Jollof Fiesta", "price": 6000, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m53", "name": "Bitterleaf Soup & Pounded Yam", "price": 5500, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m54", "name": "Fresh Fish Pepper Soup", "price": 7000, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m55", "name": "Oha Soup & Fufu", "price": 5000, "available": false, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m56", "name": "Asaro (Yam Porridge) & Snails", "price": 8500, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m57", "name": "Nkwobi", "price": 5000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m58", "name": "Isi Ewu (Goat Head)", "price": 12000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m59", "name": "Ugba & Stockfish", "price": 6500, "available": true, "img": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m60", "name": "Chapman Drink", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-7",
+      "name": "Mega Chicken",
+      "category": "rice dishes",
+      "rating": 4.4,
+      "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&auto=format&fit=crop&q=60",
+      "description": "Massive portions, endless variety, and the best Chinese-Nigerian fusion.",
+      "minimumOrder": 2500,
+      "menu": [
+        { "id": "m61", "name": "Village Rice & Croaker Fish", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m62", "name": "Chinese Fried Rice", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m63", "name": "Shredded Beef in Green Pepper", "price": 4000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m64", "name": "Mega Jollof Combo", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m65", "name": "Chicken Shawarma", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m66", "name": "Spring Rolls (4pcs)", "price": 1500, "available": false, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m67", "name": "Samosa (4pcs)", "price": 1500, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m68", "name": "Roasted Chicken (Quarter)", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m69", "name": "Ewa Agoyin", "price": 1500, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m70", "name": "Plantain (Dodo) Extra", "price": 800, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-8",
+      "name": "Ile Eros",
+      "category": "grills & suya",
+      "rating": 4.9,
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60",
+      "description": "Modern Nigerian tapas and premium grilled proteins.",
+      "minimumOrder": 7000,
+      "menu": [
+        { "id": "m71", "name": "Spicy Asun (Goat Meat)", "price": 6000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m72", "name": "Gizdodo (Gizzard & Plantain)", "price": 5000, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m73", "name": "Suya Spiced Prawns", "price": 12000, "available": true, "img": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m74", "name": "Peppered Snails", "price": 15000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m75", "name": "Yam Fries & Pepper Sauce", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m76", "name": "Signature Native Rice", "price": 8000, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m77", "name": "Braised Goat Meat", "price": 7000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m78", "name": "Crispy Pork Belly", "price": 9500, "available": false, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m79", "name": "Sweet Potato Mash", "price": 4000, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m80", "name": "Palm Wine Cocktail", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-9",
+      "name": "Kilimanjaro",
+      "category": "rice dishes",
+      "rating": 4.3,
+      "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&auto=format&fit=crop&q=60",
+      "description": "Consistent, tasty fast-casual Nigerian dining.",
+      "minimumOrder": 2000,
+      "menu": [
+        { "id": "m81", "name": "Native Rice", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m82", "name": "Edikaikong Soup & Fufu", "price": 3800, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m83", "name": "Fried Rice & Chicken", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m84", "name": "Spaghetti Bolognese", "price": 2800, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m85", "name": "Egusi Soup & Eba", "price": 3000, "available": false, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m86", "name": "Peppered Turkey", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m87", "name": "Coleslaw Portion", "price": 800, "available": true, "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m88", "name": "Moimoi", "price": 900, "available": true, "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m89", "name": "Cowleg Pepper Soup", "price": 4500, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m90", "name": "Bottled Water", "price": 300, "available": true, "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" }
+      ]
+    },
+    {
+      "id": "res-10",
+      "name": "Tantalizers",
+      "category": "fast food",
+      "rating": 4.1,
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&auto=format&fit=crop&q=60",
+      "description": "Nostalgic fast food classics, perfect for quick bites and lunch breaks.",
+      "minimumOrder": 1500,
+      "menu": [
+        { "id": "m91", "name": "Ewa Agoyin & Agege Bread", "price": 2000, "available": true, "img": "https://images.unsplash.com/photo-1558228399-fa20210e74f8?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m92", "name": "Tantalizers Meat Pie", "price": 1000, "available": true, "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m93", "name": "Jollof Rice & Beef", "price": 2500, "available": true, "img": "https://images.unsplash.com/photo-1644704040182-36e2f1dbce29?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m94", "name": "Sausage Roll", "price": 700, "available": false, "img": "https://images.unsplash.com/photo-1588882522513-333e6a72e811?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m95", "name": "Yam Chips & Chicken", "price": 3000, "available": true, "img": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m96", "name": "Spaghetti & Turkey", "price": 3800, "available": true, "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m97", "name": "Chicken Burger", "price": 2000, "available": true, "img": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m98", "name": "Poundo & Vegetable Soup", "price": 3500, "available": true, "img": "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m99", "name": "Fried Snails (1pc)", "price": 1500, "available": true, "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60" },
+        { "id": "m100", "name": "Ice Cream (2 Scoops)", "price": 1200, "available": true, "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60" }
       ]
     }
-  ],
-  "cuisines": [
-    { "id": "cuisine1", "name": "Italian", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=60" },
-    { "id": "cuisine2", "name": "Mexican", "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&auto=format&fit=crop&q=60" },
-    { "id": "cuisine3", "name": "Indian", "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop&q=60" },
-    { "id": "cuisine4", "name": "American", "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=60" },
-    { "id": "cuisine5", "name": "Asian", "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&auto=format&fit=crop&q=60" }
   ]
 }

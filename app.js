@@ -95,9 +95,7 @@ class CustomerView {
         <h5 class="text-lg font-semibold mb-2">${res.name}</h5>
         <p class="text-gray-700 mb-2 text-sm line-clamp-2">${res.description}</p>
         <span class="text-sm font-medium text-gray-600"><i class="fas fa-star text-[#DC143C]"></i> ${res.rating}/5</span>
-        <span class="absolute top-6 right-6 text-sm font-bold bg-[#DC143C] text-white px-2 py-1 rounded-md opacity-90 shadow-sm">
-          Min $${res.minimumOrder.toFixed(2)}
-        </span> 
+        
       </article>
     `).join('');
 
@@ -190,7 +188,6 @@ class MenuView {
     this.rating.innerHTML = `<i class="fas fa-star text-[#DC143C]"></i> ${restaurant.rating}`;
     this.desc.textContent = restaurant.description;
 
-    // FIX: Added data-meal-id and add-to-cart-btn class to the button!
     const menuHtml = restaurant.menu.map(meal => `
       <div class="flex justify-between items-center bg-white rounded-xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow h-32 overflow-hidden"> 
         <div class="w-1/4 h-full shrink-0"> 
@@ -199,7 +196,7 @@ class MenuView {
         <div class="p-4 flex-1 min-w-0"> 
           <h4 class="text-lg font-bold text-gray-800 mb-1 truncate">${meal.name}</h4> 
           <p class="text-sm text-gray-500 mb-2 line-clamp-2">Fresh ingredients.</p> 
-          <span class="text-[#DC143C] font-extrabold text-lg">$${meal.price.toFixed(2)}</span> 
+          <span class="text-[#DC143C] font-extrabold text-lg">₦${meal.price.toLocaleString()}</span> 
         </div> 
         <div class="pr-4 shrink-0">
           <button data-meal-id="${meal.id}" class="add-to-cart-btn w-12 h-12 bg-gray-100 hover:bg-[#DC143C] text-gray-600 hover:text-white rounded-full flex items-center justify-center shadow-sm transition-all duration-300"> 
@@ -219,11 +216,53 @@ class MenuView {
   }
 }
 
-// NEW: THE CART CLASS
+// ==========================================
+// 4. THE CART LAYER (Upgraded)
+// ==========================================
 class Cart {
   constructor() {
     this.items = []; 
+    
+    // UI Elements
     this.cartBadge = document.getElementById('cart-badge');
+    this.cartOverlay = document.getElementById('cart-overlay');
+    this.cartPanel = document.getElementById('cart-panel');
+    this.cartItemsContainer = document.getElementById('cart-items-container');
+    this.cartTotalPrice = document.getElementById('cart-total-price');
+    
+    // Buttons
+    this.openBtn = document.getElementById('open-cart-btn');
+    this.closeBtn = document.getElementById('close-cart-btn');
+
+    this.initListeners();
+  }
+
+  initListeners() {
+    // Open Cart
+    if(this.openBtn) {
+      this.openBtn.addEventListener('click', () => this.openCart());
+    }
+    // Close Cart (by clicking X or the dark overlay)
+    if(this.closeBtn && this.cartOverlay) {
+      this.closeBtn.addEventListener('click', () => this.closeCart());
+      this.cartOverlay.addEventListener('click', () => this.closeCart());
+    }
+  }
+
+  openCart() {
+    this.cartOverlay.classList.remove('hidden');
+    // Using a tiny timeout to allow the display:block to register before animating opacity
+    setTimeout(() => {
+      this.cartPanel.classList.remove('translate-x-full');
+    }, 10);
+  }
+
+  closeCart() {
+    this.cartPanel.classList.add('translate-x-full');
+    // Wait for the slide animation to finish before hiding the overlay completely
+    setTimeout(() => {
+      this.cartOverlay.classList.add('hidden');
+    }, 300);
   }
 
   add(meal) {
@@ -237,15 +276,45 @@ class Cart {
   }
 
   updateUI() {
+    // 1. Update the little red badge
     const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
     if (totalItems > 0) {
       this.cartBadge.textContent = totalItems;
       this.cartBadge.classList.remove('hidden');
-      
-      // Pop animation
       this.cartBadge.classList.add('scale-125');
       setTimeout(() => this.cartBadge.classList.remove('scale-125'), 200);
+    } else {
+      this.cartBadge.classList.add('hidden');
     }
+
+    // 2. Calculate total price
+    const totalPrice = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    this.cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+
+    // 3. Draw the items inside the slide-out panel
+    if (this.items.length === 0) {
+      this.cartItemsContainer.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center text-gray-400">
+          <i class="fas fa-shopping-basket text-5xl mb-4 opacity-50"></i>
+          <p>Your cart is empty.</p>
+        </div>`;
+      return;
+    }
+
+    const html = this.items.map(item => `
+      <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+        <img src="${item.img || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'}" class="w-16 h-16 object-cover rounded-lg">
+        <div class="flex-1">
+          <h4 class="font-bold text-gray-800 line-clamp-1">${item.name}</h4>
+          <p class="text-[#DC143C] font-bold">$${item.price.toFixed(2)}</p>
+        </div>
+        <div class="flex items-center gap-3 bg-gray-50 px-3 py-1 rounded-lg border border-gray-200">
+          <span class="font-bold text-gray-800">x${item.quantity}</span>
+        </div>
+      </div>
+    `).join('');
+
+    this.cartItemsContainer.innerHTML = html;
   }
 }
 
@@ -306,7 +375,7 @@ class VendorView {
       <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <div>
           <h4 class="text-lg font-bold text-gray-800">${meal.name}</h4>
-          <p class="text-[#DC143C] font-bold">$${meal.price.toFixed(2)}</p>
+          <p class="text-[#DC143C] font-bold mt-1">₦${meal.price.toLocaleString()}</p>
         </div>
         
         <div class="flex items-center gap-3">
@@ -444,6 +513,8 @@ class App {
       const appContainer = document.getElementById('dash');
       const heroSearchForm = document.getElementById('hero-search');
       const getStartedBtn = document.getElementById('get-started-btn');
+      const searchWhatInput = document.getElementById('search-what');
+      const dashboardSearchInput = document.getElementById('search');
 
       // When the user clicks "Get Started"
       getStartedBtn.addEventListener('click', () => {
@@ -454,12 +525,21 @@ class App {
         
         this.showHomeScreen();
       });
-      heroSearchForm.addEventListener('click', (e) => {
+      heroSearchForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const searchTerm = searchWhatInput.value.trim();
+
         appContainer.classList.remove('hidden');
         landingPage.classList.add('hidden');
         landingPage.classList.remove('flex');
         this.showHomeScreen();
+        if (dashboardSearchInput) {
+          dashboardSearchInput.value = searchTerm;
+        }
+
+        // the database using the search term and render only the results!
+        const filteredRestaurants = this.store.filterRestaurants('all', searchTerm);
+        this.customerView.render(filteredRestaurants);
       });
 
       // UPDATED NAVIGATION LOGIC
