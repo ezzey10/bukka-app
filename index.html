@@ -31,16 +31,17 @@
 <body class="text-[#DC143C] font-sans">
 
   <section id="landing-page" class="bg-white w-full z-50 relative animate-fade-in overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-white z-0"></div>
-    <button id="get-started-btn" class="absolute top-3 md:top-10 right-26 bg-[#DC143C] text-white shadow-md px-8 py-4 rounded-xl font-bold text-sm hover:bg-[#b01030] transition-all shadow-lg shadow-red-500/30 transform active:scale-95 w-full sm:w-auto">
+    <button id="get-started-btn" class="absolute top-3 md:top-10 right-26 bg-[#DC143C] text-white shadow-md px-8 py-4 rounded-xl font-bold text-sm hover:bg-[#b01030] transition-all shadow-lg shadow-red-500/30 transform active:scale-95 w-full sm:w-auto z-10">
           Get Started
         </button>  
+        <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-white z-0"></div>
+    
     <div class="hidden md:block w-lg absolute -right-50 top-50 " >
        <img src="assets/hero-main.webp" 
      alt="food" 
      class=" w-full object-cover" />
     </div>
-    <div class="min-h-screen px-4 md:px-0 relative z-10 max-w-4xl mx-auto flex flex-col items-center border-b border-[#DC143C]/10">
+    <div class="min-h-screen px-4 md:px-0 relative z-9 max-w-4xl mx-auto flex flex-col items-center border-b border-[#DC143C]/10">
       <div class="px-4 py-8 pt-25 md:py-32 flex flex-col items-center text-center">
       <span class="bg-[#DC143C]/10 text-[#DC143C] px-4 py-1.5 rounded-full text-sm font-extrabold tracking-widest uppercase mb-8 inline-block shadow-sm">
         Welcome to Bukka
@@ -205,14 +206,29 @@
   </section>
 
 <div id="dash" class="hidden">
-  <nav class="md:w-[15%] text-center bg-white/70 backdrop-blur-md md:text-left w-full md:flex md:flex-col md:h-full fixed p-4 z-20 bottom-0">
-    <a href="#home"><h1 class="hidden md:flex text-2xl font-bold mb-8 hover:text-[#FF3B63]">Bukka</h1></a>
+  <nav class="md:w-[15%] text-center backdrop-blur-md md:text-left w-full md:flex md:flex-col md:h-full fixed p-4 z-20 bottom-0 bg-white md:border-r md:border-gray-200 shadow-sm">
+    <a href="#landing-page"><h1 class="hidden md:flex text-2xl font-bold mb-8 hover:text-[#FF3B63]">Bukka</h1></a>
     <ul class="flex justify-around items-center h-full md:flex-col md:space-y-6 md:items-start md:h-auto w-full md:text-gray-700">
-      <li class="text-center md:text-left flex-1 md:flex-none"><a href="#home" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-house"></i>Home</a></li>
-      <li class="text-center relative z-30 flex flex-1 md:flex-none justify-center items-center"><a href="#order" class="flex flex-col md:flex-row gap-2 items-center justify-center bg-[#DC143C] text-white md:text-gray-700 w-20 h-20 rounded-full shadow-lg md:shadow-none -mt-12 transform active:scale-95 transition-transform md:bg-transparent md:hover:text-[#FF3B63] md:w-auto md:h-auto md:rounded-none md:mt-0 md:border-0 md:py-1 font-medium"><i class="fa-solid fa-bowl-food text-base md:hidden"></i><span class="text-xs md:text-base md:block font-bold">Order</span></a></li>
-      <li class="hidden md:block text-center md:text-left"><a href="#help" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-regular fa-question-circle"></i>Help & Support</a></li>
-      <li class="text-center md:text-left flex-1 md:flex-none"><a href="#settings" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-gear"></i>Settings</a></li>
+      <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#home" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-house"></i>Home</a></li>
+      <li class="nav-btn text-center relative z-30 flex flex-1 md:flex-none justify-center items-center"><a href="#order" class="flex flex-col md:flex-row gap-2 items-center justify-center bg-[#DC143C] text-white md:text-gray-700 w-20 h-20 rounded-full shadow-lg md:shadow-none -mt-12 transform active:scale-95 transition-transform md:bg-transparent md:hover:text-[#FF3B63] md:w-auto md:h-auto md:rounded-none md:mt-0 md:border-0 md:py-1 font-medium"><i class="fa-solid fa-bowl-food text-base md:hidden"></i><span class="text-xs md:text-base md:block font-bold">Order</span></a></li>
+      <li class="nav-btn hidden md:block text-center md:text-left"><a href="#help" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-regular fa-question-circle"></i>Help & Support</a></li>
+      <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#settings" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-gear"></i>Settings</a></li>
     </ul>
+    <div class="px-4 mt-auto space-y-4 hidden md:block">
+        <button id="switch-to-vendor-btn" class="w-full flex items-center justify-center px-4 py-3 text-[#DC143C] bg-red-50 hover:bg-red-100 transition-all active:scale-95 rounded-xl font-bold text-sm border border-red-200/50">
+          <i class="fas fa-store mr-2"></i> Merchant Portal
+        </button>
+
+        <div class="p-4 flex items-center bg-gray-50 rounded-xl border border-gray-100">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
+            E
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-bold text-gray-900 truncate">Ezzey</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-400"> Account</p>
+          </div>
+        </div>
+      </div>
   </nav>
 
   <main id="home" class="w-full md:w-[85%] md:ml-[15%] min-h-screen bg-gray-50 pb-20 md:pb-0">
@@ -232,6 +248,9 @@
           <i class="fa-solid fa-cart-shopping"></i>
           <span id="cart-badge" class="absolute -top-1 -right-1 text-center hidden h-5 w-5 items-center justify-center rounded-full bg-[#DC143C] text-[10px] font-bold text-white border-2 border-white transition-all transform duration-300">0</span>
         </span>
+        <span class="flex md:hidden"><div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
+            E
+          </div></span>
         
       </div>
     </header>
@@ -299,80 +318,126 @@
         <div id="menu-items-container" class="flex flex-col gap-6"></div>
       </div>
     </div>
-    <div id="vendor-view" class="hidden mt-24 px-4 pb-24 w-full animate-fade-in">
-      <div class="max-w-4xl mx-auto">
-        
-        
-        <div class="bg-gray-900 rounded-2xl p-6 text-white mb-8 shadow-lg flex justify-between items-center">
-          <div>
-            <span class="text-[#FF3B63] text-sm font-bold tracking-wider uppercase mb-1 block">Vendor Portal</span>
-            
-            <select id="vendor-selector" class="bg-gray-800 text-white text-xl font-bold border border-gray-700 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#DC143C] cursor-pointer">
-            </select>
-            
-          </div>
-          <div class="text-right">
-            <span class="text-gray-400 text-sm">Active Orders</span>
-            <p class="text-2xl font-bold">0</p>
-          </div>
+    <div id="vendor-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex flex-col md:flex-row overflow-hidden">
+    
+    <aside class="w-64 bg-white border-r border-gray-200 flex-col py-6 hidden md:flex shrink-0 z-10 shadow-sm">
+        <div class="px-6 mb-12">
+            <h1 class="text-2xl font-bold text-[#DC143C]">Vendors</h1>
+            <p class="text-sm text-gray-500 font-medium mt-1">Restaurant Portal</p>
         </div>
+        <nav class="flex-1 space-y-2 px-2">
+            <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
+                <i class="fas fa-chart-pie mr-3"></i> Dashboard
+            </a>
+            <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
+                <i class="fas fa-receipt mr-3"></i> Orders
+            </a>
+        </nav>
+        <div class="px-4 mt-auto">
+            <button id="vendor-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-[#DC143C]/60 hover:bg-[#DC143C] transition-all active:scale-95 rounded-xl font-bold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
+            </button>
+        </div>
+    </aside>
 
-        <h3 class="text-xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">Menu Management</h3>
+    <main class="flex-1 h-full overflow-y-auto p-4 md:p-10 relative">
         
-        <div id="vendor-items-container" class="flex flex-col gap-4">
-          </div>
+        <header class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
+            <div>
+                <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-4">Live Overview</p>
+                <select id="vendor-selector" class="text-xl md:text-xl font-medium text-gray-900 bg-transparent border-b-2 border-gray-300 pb-1 focus:outline-none focus:border-[#DC143C] cursor-pointer">
+                  </select>
+            </div>
+            <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm self-start md:self-auto">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
+                <span class="text-sm font-bold text-gray-700">Accepting Orders</span>
+            </div>
+        </header>
 
-      </div>
-    </div>
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+            
+            <section class="xl:col-span-8 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        Active Queue <span id="vendor-queue-count" class="bg-red-100 text-[#DC143C] px-2 py-0.5 rounded-md text-sm">0</span>
+                    </h3>
+                </div>
+                
+                <div id="vendor-orders-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
+            </section>
+
+            <aside class="xl:col-span-4">
+                <div class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl flex flex-col h-[500px]">
+                    <div class="flex justify-between items-center mb-6 shrink-0">
+                        <h3 class="text-xl font-bold">Quick Menu</h3>
+                    </div>
+                    
+                    <div id="vendor-items-container" class="space-y-3 overflow-y-auto no-scrollbar pb-4 pr-2 flex-1">
+                    </div>
+                    
+                </div>
+            </aside>
+        </div>
+    </main>
+</div>
 
 
     <!-- Rider -->
-    <div id="rider-view" class="hidden mt-24 px-4 pb-24 w-full animate-fade-in">
-      <div class="max-w-md mx-auto">
-        <!-- Header -->
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-900">Delivery Tasks</h2>
-          <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold animate-pulse">Online</span>
+    
+<div id="rider-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex overflow-hidden">
+    
+    <!-- Sidebar -->
+    <aside id="rider-sidebar" class="md:translate-x-0 -translate-x-full fixed w-64 bg-white border-r border-gray-200 flex-col py-6 hidden md:flex shrink-0 z-10 shadow-sm">
+      <button id="rider-close-btn" class="md:hidden p-4"><i class="fas fa-times"></i></button>
+        <div class="px-6 mb-12">
+            <h1 class="text-2xl font-extrabold text-[#DC143C]">Bukka Rider</h1>
+            <p class="text-sm text-gray-500 font-medium mt-1">Dispatch Hub</p>
         </div>
-
-        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-          <div class="bg-gray-50 p-4 border-b border-gray-100 flex justify-between items-center">
-            <span class="text-sm font-bold text-gray-600">Order #BK-8492</span>
-            <span class="text-xs font-medium text-gray-500">Just now</span>
-          </div>
-          
-          <div class="p-6">
-            <div class="relative pl-6 mb-6">
-              <!-- Vertical Line -->
-              <div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-gray-200"></div>
-              
-              <!-- Pickup Point -->
-              <div class="mb-6 relative">
-                <div class="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#DC143C] border-4 border-white shadow-sm"></div>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Pickup</p>
-                <h4 class="text-lg font-bold text-gray-900">Luigi's Oven</h4>
-                <p class="text-sm text-gray-500">Main Campus Food Court</p>
-              </div>
-              
-             
-              <div class="relative">
-                <div class="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-green-500 border-4 border-white shadow-sm"></div>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Dropoff</p>
-                <h4 class="text-lg font-bold text-gray-900">Client's Location</h4>
-                <p class="text-sm text-gray-500">Hostel Block A, Room 402</p>
-              </div>
-            </div>
-
-      
-            <button id="rider-status-btn" class="w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 shadow-lg bg-[#DC143C] active:scale-95">
-              Accept Delivery
+        <nav class="flex-1 space-y-2 px-2">
+            <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
+                <i class="fas fa-motorcycle mr-3"></i> Active Deliveries
+            </a>
+            <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
+                <i class="fas fa-wallet mr-3"></i> Earnings
+            </a>
+        </nav>
+        <div class="px-4 mt-auto">
+            <button id="rider-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-gray-900 hover:bg-gray-800 transition-all active:scale-95 rounded-xl font-bold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
             </button>
-          </div>
         </div>
+    </aside>
 
-      </div>
+    <!-- Main Canvas -->
+    <main class="flex-1 h-full overflow-y-auto p-4 md:p-10 relative">
+        <header class="flex justify-between items-end mb-8">
+            <div>
+                <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-1">Dispatch Center</p>
+            </div>
+            <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
+                <span class="text-sm font-bold text-gray-700">Accepting Jobs</span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+            <section class="xl:col-span-5 space-y-6">
+                <h3 class="text-lg font-bold text-gray-900">Available Near You</h3>
+                <div id="available-deliveries-container" class="flex flex-col gap-4"></div>
+            </section>
+            <section class="xl:col-span-7" id="active-task-wrapper">
+                <div id="active-task-container" class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[500px] flex flex-col"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Success Toast -->
+    <div id="rider-toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-10 z-[110]">
+        <i class="fas fa-check-circle text-green-400"></i>
+        <span class="text-sm font-bold">Delivery completed successfully!</span>
     </div>
-  
+</div>  
   </main>
 </div>
 <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity backdrop-blur-sm"></div>

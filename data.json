@@ -217,5 +217,52 @@
         { "id": "m100", "name": "Ice Cream (2 Scoops)", "price": 1200, "available": true, "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60" }
       ]
     }
+  ],
+  "deliveries": [
+    {
+      "id": "DEL-4821",
+      "vendorId": "res-1",
+      "customerName": "Sarah J.",
+      "dropoff": "NDDC Hostel, Block A",
+      "distance": "1.2 km",
+      "earnings": 850,
+      "orderTotal": 3500,
+      "items": "2 items (Standard Order)",
+      "status": "available"
+    },
+    {
+      "id": "DEL-9102",
+      "vendorId": "res-2",
+      "customerName": "Michael T.",
+      "dropoff": "ETF Block, Room 12",
+      "distance": "0.8 km",
+      "earnings": 600,
+      "orderTotal": 2800,
+      "items": "1 item (Fast Track)",
+      "status": "available"
+    },
+    {
+      "id": "DEL-3314",
+      "vendorId": "res-4",
+      "customerName": "Esther O.",
+      "dropoff": "Postgraduate Hostel",
+      "distance": "2.5 km",
+      "earnings": 1200,
+      "orderTotal": 6500,
+      "items": "4 items (Large Order)",
+      "status": "available"
+    },
+    {
+      "id": "DEL-7761",
+      "vendorId": "res-3",
+      "customerName": "David U.",
+      "dropoff": "Main Gatehouse",
+      "distance": "1.5 km",
+      "earnings": 900,
+      "orderTotal": 4000,
+      "items": "2 items (Standard Order)",
+      "status": "available"
+    }
   ]
+
 }
