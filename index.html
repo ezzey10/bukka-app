@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,87 +12,116 @@
   <title>Bukka</title>
 
   <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     .animate-marquee {
       width: max-content;
       animation: marquee 25s linear infinite;
     }
+
     .marquee-container:hover .animate-marquee {
       animation-play-state: paused;
     }
   </style>
 </head>
-</head>
+
 
 <body class="text-[#DC143C] font-sans">
 
   <section id="landing-page" class="bg-white w-full z-50 relative animate-fade-in overflow-hidden">
-    <button id="get-started-btn" class="absolute top-3 md:top-10 right-26 bg-[#DC143C] text-white shadow-md px-8 py-4 rounded-xl font-bold text-sm hover:bg-[#b01030] transition-all shadow-lg shadow-red-500/30 transform active:scale-95 w-full sm:w-auto z-10">
-          Get Started
-        </button>  
-        <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-white z-0"></div>
-    
-    <div class="hidden md:block w-lg absolute -right-50 top-50 " >
-       <img src="assets/hero-main.webp" 
-     alt="food" 
-     class=" w-full object-cover" />
+    <button id="get-started-btn" class="absolute top-4 right-4 md:top-8 md:right-10 bg-[#DC143C] text-white shadow-md px-6 py-2.5 md:px-8 md:py-4 rounded-xl font-bold text-sm hover:bg-[#b01030] transition-all shadow-lg shadow-red-500/30 transform active:scale-95 z-20">
+      Get Started
+    </button>
+    <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-white z-0"></div>
+
+    <div class="hidden md:block w-lg absolute -right-50 top-50 ">
+      <img src="assets/hero-main.webp" alt="food" class=" w-full object-cover" />
     </div>
-    <div class="min-h-screen px-4 md:px-0 relative z-9 max-w-4xl mx-auto flex flex-col items-center border-b border-[#DC143C]/10">
+    <div
+      class="min-h-screen px-4 md:px-0 relative z-9 max-w-4xl mx-auto flex flex-col items-center border-b border-[#DC143C]/10">
       <div class="px-4 py-8 pt-25 md:py-32 flex flex-col items-center text-center">
-      <span class="bg-[#DC143C]/10 text-[#DC143C] px-4 py-1.5 rounded-full text-sm font-extrabold tracking-widest uppercase mb-8 inline-block shadow-sm">
-        Welcome to Bukka
-      </span>
-      
-      <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-        Amazing Food, <br/> Delivered <span class="text-[#DC143C] bg-clip-text">Fast.</span>
-      </h1>
-      
-      <p class="text-lg md:text-xl text-gray-500 mb-4 md:mb-10 max-w-2xl leading-relaxed">
-        The all-in-one platform connecting students with the best local vendors and fastest delivery riders on campus. No queues, just good food.
-      </p>
+        <span
+          class="bg-[#DC143C]/10 text-[#DC143C] px-4 py-1.5 rounded-full text-sm font-extrabold tracking-widest uppercase mb-8 inline-block shadow-sm">
+          Welcome to Bukka
+        </span>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
+          Amazing Food, <br /> Delivered <span class="text-[#DC143C] bg-clip-text">Fast.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-500 mb-4 md:mb-10 max-w-2xl leading-relaxed">
+          The all-in-one platform connecting students with the best local vendors and fastest delivery riders on campus.
+          No queues, just good food.
+        </p>
       </div>
       <form id="hero-search" class="w-full max-w-4xl mx-auto mt-8 relative z-20">
-        <div class="flex flex-col md:flex-row items-center bg-white rounded-3xl md:rounded-2xl shadow-2xl p-2 border border-gray-100 transition-all focus-within:ring-4 focus-within:ring-[#DC143C]/20 focus-within:border-[#DC143C]/50">
-          <div class="flex items-center flex-1 px-6 py-4 md:py-2 w-full border-b md:border-b-0 md:border-r border-gray-200">
+        <div
+          class="flex flex-col md:flex-row items-center bg-white rounded-3xl md:rounded-2xl shadow-2xl p-2 border border-gray-100 transition-all focus-within:ring-4 focus-within:ring-[#DC143C]/20 focus-within:border-[#DC143C]/50">
+          <div
+            class="flex items-center flex-1 px-6 py-4 md:py-2 w-full border-b md:border-b-0 md:border-r border-gray-200">
             <i class="fas fa-location-dot text-[#DC143C] text-xl mr-4 opacity-80"></i>
             <div class="flex flex-col w-full text-left">
-              <label for="search-where" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Where</label>
-              <input id="search-where" type="text" placeholder="Hostel, campus block, or address..." class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate" autocomplete="off">
+              <label for="search-where"
+                class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Where</label>
+              <input id="search-where" type="text" placeholder="Hostel, campus block, or address..."
+                class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate"
+                autocomplete="off">
             </div>
           </div>
           <div class="flex items-center flex-1 px-6 py-4 md:py-2 w-full">
             <i class="fas fa-search text-[#DC143C] text-xl mr-4 opacity-80"></i>
             <div class="flex flex-col w-full text-left">
               <label for="search-what" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">What</label>
-              <input id="search-what" type="text" placeholder="Cuisine, vendor, or meal..." class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate" autocomplete="off">
+              <input id="search-what" type="text" placeholder="Cuisine, vendor, or meal..."
+                class="w-full bg-transparent border-none focus:outline-none text-gray-900 font-medium placeholder-gray-400 truncate"
+                autocomplete="off">
             </div>
           </div>
-          <button type="submit" id="hero-search-btn" class="w-full md:w-auto bg-[#DC143C] text-white px-10 py-4 md:py-4 rounded-2xl md:rounded-2xl font-bold text-lg hover:bg-[#b01030] transition-all transform active:scale-95 shadow-lg mt-2 md:mt-0 flex items-center justify-center gap-2">
+          <button type="submit" id="hero-search-btn"
+            class="w-full md:w-auto bg-[#DC143C] text-white px-10 py-4 md:py-4 rounded-2xl md:rounded-2xl font-bold text-lg hover:bg-[#b01030] transition-all transform active:scale-95 shadow-lg mt-2 md:mt-0 flex items-center justify-center gap-2">
             <span>Search</span>
             <i class="fas fa-arrow-right md:hidden"></i>
           </button>
-          
+
         </div>
       </form>
-      
 
-      <div class="flex my-8 md:my-16 pt-8 border-t border-gray-100 gap-8 text-gray-400 text-sm font-semibold justify-center w-full">
-        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-motorcycle text-gray-300"></i><span>Fast Delivery</span> </span>
-        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-store text-gray-300"></i><span>Local Vendors</span> </span>
-        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-wallet text-gray-300"></i><span>Five-Star Service</span> </span>
+
+      <div
+        class="flex my-8 md:my-16 pt-8 border-t border-gray-100 gap-8 text-gray-400 text-sm font-semibold justify-center w-full">
+        <span class="flex flex-col md:flex-row items-center gap-2"><i
+            class="fas fa-motorcycle text-gray-300"></i><span>Fast Delivery</span> </span>
+        <span class="flex flex-col md:flex-row items-center gap-2"><i class="fas fa-store text-gray-300"></i><span>Local
+            Vendors</span> </span>
+        <span class="flex flex-col md:flex-row items-center gap-2"><i
+            class="fas fa-wallet text-gray-300"></i><span>Five-Star Service</span> </span>
       </div>
     </div>
 
     <hr class="border-gray-100 border shadow-md my-12 w-full" />
     <section class="flex justify-center p-4 w-full mx-auto my-12 bg-white shadow-lg border">
-      <div id="cuisines-container" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"></div>
+      <div id="cuisines-container"
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"></div>
     </section>
-    <section class="p-8 w-full max-w-6xl mx-auto my-16 relative z-10 bg-white shadow-md rounded-3xl border border-gray-100 backdrop-blur-md">
+    <section
+      class="p-8 w-full max-w-6xl mx-auto my-16 relative z-10 bg-white shadow-md rounded-3xl border border-gray-100 backdrop-blur-md">
       <div class="flex justify-between items-end mb-6 px-2">
         <div>
           <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900">Top Rated Vendors</h2>
@@ -100,47 +130,60 @@
         <button class="text-[#DC143C] font-bold hover:underline hidden md:block">See all</button>
       </div>
 
-      <div id="featured-vendors-container" class="flex flex-col md:flex-row gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing px-2 pt-2">
-        </div>
+      <div id="featured-vendors-container"
+        class="flex flex-col md:flex-row gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing px-2 pt-2">
+      </div>
     </section>
     <div class="w-full bg-white relative z-10 py-24 border-t border-gray-100">
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">How <span class="text-[#DC143C]">Bukka</span> Works</h2>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">How <span
+              class="text-[#DC143C]">Bukka</span> Works</h2>
           <p class="text-gray-500 text-lg">Your favorite campus meals, delivered in three simple steps.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div class="flex flex-col items-center group">
-            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+            <div
+              class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
               <i class="fas fa-location-dot"></i>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">1. Set your location</h3>
-            <p class="text-gray-500 leading-relaxed">Tell us which hostel or block you are in, and we will show you the best vendors currently open nearby.</p>
+            <p class="text-gray-500 leading-relaxed">Tell us which hostel or block you are in, and we will show you the
+              best vendors currently open nearby.</p>
           </div>
           <div class="flex flex-col items-center group">
-            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+            <div
+              class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
               <i class="fas fa-burger"></i>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">2. Choose your meal</h3>
-            <p class="text-gray-500 leading-relaxed">Browse hundreds of menus, from local Bukka joints to premium campus restaurants.</p>
+            <p class="text-gray-500 leading-relaxed">Browse hundreds of menus, from local Bukka joints to premium campus
+              restaurants.</p>
           </div>
           <div class="flex flex-col items-center group">
-            <div class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
+            <div
+              class="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-[#DC143C] text-3xl mb-6 shadow-sm group-hover:bg-[#DC143C] group-hover:text-white transition-all duration-300">
               <i class="fas fa-motorcycle"></i>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">3. Fast Delivery</h3>
-            <p class="text-gray-500 leading-relaxed">Our student riders will pick up your order and deliver it straight to your door in minutes.</p>
+            <p class="text-gray-500 leading-relaxed">Our student riders will pick up your order and deliver it straight
+              to your door in minutes.</p>
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="flex overflow-hidden bg-[#dc143c] text-white py-4 mt-16 marquee-container relative z-10 border-y border-gray-200">
+    <div
+      class="flex overflow-hidden bg-[#dc143c] text-white py-4 mt-16 marquee-container relative z-10 border-y border-gray-200">
       <div class="flex whitespace-nowrap animate-marquee items-center gap-12 px-6">
         <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
-          <svg width="35" height="24" class="text-green-500 mr-3" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 41"><path d="M20 0s-.834 17.324-20 20c0 0 16.453.315 20 20 0 0 1.13-17.018 20-20 0 0-17.93-2.523-20-20Z" fill="currentColor"></path></svg>
+          <svg width="35" height="24" class="text-green-500 mr-3" fill="none" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 43 41">
+            <path d="M20 0s-.834 17.324-20 20c0 0 16.453.315 20 20 0 0 1.13-17.018 20-20 0 0-17.93-2.523-20-20Z"
+              fill="currentColor"></path>
+          </svg>
           Fresh market picks
         </span>
         <span class="flex items-center text-white font-bold text-sm uppercase tracking-wider">
@@ -168,14 +211,18 @@
 
     <div class="w-full bg-gray-50 py-24 relative z-10">
       <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <div class="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
+
+        <div
+          class="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
           <div class="absolute -right-10 -bottom-10 opacity-5">
             <i class="fas fa-motorcycle text-9xl"></i>
           </div>
           <h3 class="text-3xl font-bold text-gray-900 mb-4">Ride with Bukka</h3>
-          <p class="text-gray-500 mb-8 max-w-sm">Turn your free time into extra cash. Set your own schedule and deliver food around campus.</p>
-          <button class="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition-colors">Apply to Ride</button>
+          <p class="text-gray-500 mb-8 max-w-sm">Turn your free time into extra cash. Set your own schedule and deliver
+            food around campus.</p>
+          <button
+            class="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition-colors">Apply to
+            Ride</button>
         </div>
 
         <div class="bg-[#DC143C] rounded-3xl p-10 shadow-sm text-white relative overflow-hidden">
@@ -183,8 +230,11 @@
             <i class="fas fa-store text-9xl"></i>
           </div>
           <h3 class="text-3xl font-bold mb-4">Become a Partner</h3>
-          <p class="text-red-100 mb-8 max-w-sm">Reach hundreds of hungry students every day. We handle the logistics, you focus on the food.</p>
-          <button class="bg-white text-[#DC143C] px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">Register Vendor</button>
+          <p class="text-red-100 mb-8 max-w-sm">Reach hundreds of hungry students every day. We handle the logistics,
+            you focus on the food.</p>
+          <button
+            class="bg-white text-[#DC143C] px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">Register
+            Vendor</button>
         </div>
 
       </div>
@@ -205,22 +255,42 @@
     </footer>
   </section>
 
-<div id="dash" class="hidden">
-  <nav class="md:w-[15%] text-center backdrop-blur-md md:text-left w-full md:flex md:flex-col md:h-full fixed p-4 z-20 bottom-0 bg-white md:border-r md:border-gray-200 shadow-sm">
-    <a href="#landing-page"><h1 class="hidden md:flex text-2xl font-bold mb-8 hover:text-[#FF3B63]">Bukka</h1></a>
-    <ul class="flex justify-around items-center h-full md:flex-col md:space-y-6 md:items-start md:h-auto w-full md:text-gray-700">
-      <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#home" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-house"></i>Home</a></li>
-      <li class="nav-btn text-center relative z-30 flex flex-1 md:flex-none justify-center items-center"><a href="#order" class="flex flex-col md:flex-row gap-2 items-center justify-center bg-[#DC143C] text-white md:text-gray-700 w-20 h-20 rounded-full shadow-lg md:shadow-none -mt-12 transform active:scale-95 transition-transform md:bg-transparent md:hover:text-[#FF3B63] md:w-auto md:h-auto md:rounded-none md:mt-0 md:border-0 md:py-1 font-medium"><i class="fa-solid fa-bowl-food text-base md:hidden"></i><span class="text-xs md:text-base md:block font-bold">Order</span></a></li>
-      <li class="nav-btn hidden md:block text-center md:text-left"><a href="#help" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-regular fa-question-circle"></i>Help & Support</a></li>
-      <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#settings" class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i class="fa-solid fa-gear"></i>Settings</a></li>
-    </ul>
-    <div class="px-4 mt-auto space-y-4 hidden md:block">
-        <button id="switch-to-vendor-btn" class="w-full flex items-center justify-center px-4 py-3 text-[#DC143C] bg-red-50 hover:bg-red-100 transition-all active:scale-95 rounded-xl font-bold text-sm border border-red-200/50">
-          <i class="fas fa-store mr-2"></i> Merchant Portal
+  <div id="dash" class="hidden">
+    <nav
+      class="md:w-[15%] text-center backdrop-blur-md md:text-left w-full md:flex md:flex-col md:h-full fixed p-4 z-20 bottom-0 bg-white md:border-r md:border-gray-200 shadow-sm">
+      <a href="#home" class="flex items-center justify-center md:justify-start mb-8">
+  <h1 class="hidden md:flex text-2xl font-bold mb-8 hover:text-[#FF3B63]">Bukka</h1>
+</a>
+      <ul
+        class="flex justify-around items-center h-full md:flex-col md:space-y-6 md:items-start md:h-auto w-full md:text-gray-700">
+        <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#home"
+            class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i
+              class="fa-solid fa-house"></i>Home</a></li>
+        <li class="nav-btn text-center relative z-30 flex flex-1 md:flex-none justify-center items-center"><a
+            href="#order"
+            class="flex flex-col md:flex-row gap-2 items-center justify-center bg-[#DC143C] text-white md:text-gray-700 w-20 h-20 rounded-full shadow-lg md:shadow-none -mt-12 transform active:scale-95 transition-transform md:bg-transparent md:hover:text-[#FF3B63] md:w-auto md:h-auto md:rounded-none md:mt-0 md:border-0 md:py-1 font-medium"><i
+              class="fa-solid fa-bowl-food text-base md:hidden"></i><span
+              class="text-xs md:text-base md:block font-bold">Order</span></a></li>
+        <li class="nav-btn hidden md:block text-center md:text-left"><a href="#help"
+            class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i
+              class="fa-regular fa-question-circle"></i>Help & Support</a></li>
+        <li class="nav-btn text-center md:text-left flex-1 md:flex-none"><a href="#settings"
+            class="flex flex-col md:flex-row gap-2 items-center justify-center hover:text-[#FF3B63] block py-1 font-medium"><i
+              class="fa-solid fa-gear"></i>Settings</a></li>
+      </ul>
+      <div class="px-4 mt-auto space-y-4 hidden md:block">
+        <button id="vendor-login-btn"
+          class="w-full flex items-center justify-center px-4 py-3 text-[#DC143C] bg-red-50 hover:bg-red-100 transition-all active:scale-95 rounded-xl font-bold text-sm border border-red-200/50">
+          <i class="fas fa-store mr-2"></i> Vendor Portal
+        </button>
+        <button id="rider-login-btn"
+          class="w-full flex items-center justify-center px-4 py-3 text-[#DC143C] bg-red-50 hover:bg-red-100 transition-all active:scale-95 rounded-xl font-bold text-sm border border-red-200/50">
+          <i class="fa-solid fa-motorcycle mr-2"></i> Rider Portal
         </button>
 
         <div class="p-4 flex items-center bg-gray-50 rounded-xl border border-gray-100">
-          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
+          <div
+            class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
             E
           </div>
           <div class="flex-1 min-w-0">
@@ -229,224 +299,264 @@
           </div>
         </div>
       </div>
-  </nav>
+    </nav>
 
-  <main id="home" class="w-full md:w-[85%] md:ml-[15%] min-h-screen bg-gray-50 pb-20 md:pb-0">
-    <header class="fixed top-0 left-0 right-0 w-full z-10 h-16 flex justify-between items-center px-4	md:left-[15%]	md:w-auto">
-      <div class="flex gap-4 rounded-lg bg-white items-center">
-        <span class="relative h-10 flex items-center justify-center shadow-sm hover:bg-gray-100"><a href="#rider" class="flex flex-col w-10 h-15 md:flex-row items-center justify-center hover:bg-gray-100 block py-2 font-medium">
-          <i class="fa-solid fa-motorcycle"></i>
-        </a></span>
-        <span class="relative h-10 flex items-center justify-center shadow-sm hover:bg-gray-100"><a href="#vendor" class="flex flex-col w-10 h-10 md:flex-row items-center justify-center hover:bg-gray-100 block py-2 font-medium">
-          <i class="fa-solid fa-store"></i>
-        </a></span>
-      </div>
-      <div class="flex gap-4 bg-white p-2 rounded-lg shadow-md">
-        <span class="relative w-10 h-10 flex items-center justify-center rounded-full shadow-sm hover:bg-gray-100"><i class="fas fa-bell"></i></span>
-        
-        <span id="open-cart-btn" class="relative w-10 h-10 flex items-center justify-center rounded-full shadow-sm hover:bg-gray-100 cursor-pointer">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span id="cart-badge" class="absolute -top-1 -right-1 text-center hidden h-5 w-5 items-center justify-center rounded-full bg-[#DC143C] text-[10px] font-bold text-white border-2 border-white transition-all transform duration-300">0</span>
-        </span>
-        <span class="flex md:hidden"><div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
-            E
-          </div></span>
-        
-      </div>
-    </header>
+    <main id="home" class="w-full md:w-[85%] md:ml-[15%] min-h-screen bg-gray-50 pb-20 md:pb-0">
+      <header
+        class="fixed top-0 left-0 md:mx-15 md:my-5 right-0 w-full z-10 h-16 flex justify-between items-center px-4	md:left-[15%]	md:w-auto">
+        <div class="flex  gap-4 rounded-lg bg-white items-center">
+          <span class="md:hidden relative h-10 flex items-center justify-center shadow-sm hover:bg-gray-100"><a href="#rider"
+              class="flex flex-col w-10 h-15 md:flex-row items-center justify-center hover:bg-gray-100 block py-2 font-medium">
+              <i class="fa-solid fa-motorcycle"></i>
+            </a></span>
+          <span class="md:hidden relative h-10 flex items-center justify-center shadow-sm hover:bg-gray-100"><a href="#vendor"
+              class="flex flex-col w-10 h-10 md:flex-row items-center justify-center hover:bg-gray-100 block py-2 font-medium">
+              <i class="fa-solid fa-store"></i>
+            </a></span>
+        </div>
+        <div class="flex gap-4 bg-white p-2 rounded-lg shadow-md">
+          <span class="relative w-10 h-10 flex items-center justify-center rounded-full shadow-sm hover:bg-gray-100"><i
+              class="fas fa-bell"></i></span>
 
-    <div id="home-content" class="mt-24 px-4">
-      <h3 class="text-2xl font-bold mb-4">Welcome Ezzey</h3>
-      <p class="text-gray-700 mb-6">Your one-stop destination for delicious meals and quick service. Explore our menu, place your order, and enjoy a delightful dining experience with us!</p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <h4 class="mb-4 text-xl font-bold">Popular Restaurants Near You</h4>
-        <ul class="flex gap-4 text-gray-700">
-          <li>
-            <label for="all" class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white ">
-              <input type="radio" name="restaurant" id="all" value="all" class="sr-only" checked /> <span>All</span>
-            </label>
-          </li>
-          <li>
-            <label for="mexican" class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
-              <input type="radio" name="restaurant" id="mexican" value="mexican" class="sr-only" /> <span>Mexican</span>
-            </label>
-          </li>
-          <li>
-            <label for="indian" class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
-              <input type="radio" name="restaurant" id="indian" value="indian" class="sr-only" /> <span>Indian</span>
-            </label>
-          </li>
-          <li>
-            <label for="italian" class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
-              <input type="radio" name="restaurant" id="italian" value="italian" class="sr-only" /> <span>Italian</span>
-            </label>
-          </li>
-          <li>
-            <label for="search" class="relative inline-block w-full md:w-auto">
-              <input type="text" name="search" id="search" class="px-2 py-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DC143C] transition-all duration-300 ease-in-out w-[2rem] focus:w-full md:w-auto" />
-              <span class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-[#dc143c]"><i class="fas fa-search"></i><span class="hidden md:block">&nbsp;&nbsp;Search</span></span>
-            </label>
-          </li>
-        </ul>
-      </div>
-      
-      <div id="restuarants" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    </div> <div id="menu" class="pb-24 w-full animate-fade-in hidden">
-      <div class="relative w-full h-64 md:h-80">
-        <button id="back-btn" class="absolute top-6 left-4 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg text-gray-800 hover:text-[#DC143C] transition-colors"><i class="fas fa-arrow-left"></i></button>
-        <img id="menu-hero-img" src="" alt="Restaurant Cover" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent h-24"></div>
-      </div>
+          <span id="open-cart-btn"
+            class="relative w-10 h-10 flex items-center justify-center rounded-full shadow-sm hover:bg-gray-100 cursor-pointer">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-badge"
+              class="absolute -top-1 -right-1 text-center hidden h-5 w-5 items-center justify-center rounded-full bg-[#DC143C] text-[10px] font-bold text-white border-2 border-white transition-all transform duration-300">0</span>
+          </span>
+          <span class="flex md:hidden">
+            <div
+              class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-[#DC143C] mr-3 font-bold shrink-0">
+              E
+            </div>
+          </span>
 
-      <div class="relative -mt-10 px-4 md:px-8 z-10 w-full max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-          <div class="flex justify-between items-start mb-2">
-            <h2 id="menu-title" class="text-3xl font-bold text-gray-900">Title</h2>
-            <span id="menu-rating" class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-lg text-sm font-bold text-gray-800"></span>
+        </div>
+      </header>
+
+      <div id="home-content" class="mt-24 px-4 md:px-15">
+        <h3 class="text-2xl font-bold mb-4">Welcome Ezzey</h3>
+        <p class="text-gray-700 mb-6">Your one-stop destination for delicious meals and quick service. Explore our menu,
+          place your order, and enjoy a delightful dining experience with us!</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <h4 class="mb-4 text-xl font-bold">Popular Restaurants Near You</h4>
+          <ul class="flex gap-4 text-gray-700">
+            <li>
+              <label for="all"
+                class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white ">
+                <input type="radio" name="restaurant" id="all" value="all" class="sr-only" checked /> <span>All</span>
+              </label>
+            </li>
+            <li>
+              <label for="mexican"
+                class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
+                <input type="radio" name="restaurant" id="mexican" value="mexican" class="sr-only" />
+                <span>Mexican</span>
+              </label>
+            </li>
+            <li>
+              <label for="indian"
+                class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
+                <input type="radio" name="restaurant" id="indian" value="indian" class="sr-only" /> <span>Indian</span>
+              </label>
+            </li>
+            <li>
+              <label for="italian"
+                class="relative flex items-center justify-center px-2 py-1 rounded-lg hover:text-[#FF3B63] font-medium text-gray-700 cursor-pointer select-none transition-all duration-300 has-[:checked]:bg-[#DC143C] has-[:checked]:text-white hover:bg-gray-50">
+                <input type="radio" name="restaurant" id="italian" value="italian" class="sr-only" />
+                <span>Italian</span>
+              </label>
+            </li>
+            <li>
+              <label for="search" class="relative inline-block w-full md:w-auto">
+                <input type="text" name="search" id="search"
+                  class="px-2 py-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DC143C] transition-all duration-300 ease-in-out w-[2rem] focus:w-full md:w-auto" />
+                <span class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-[#dc143c]"><i
+                    class="fas fa-search"></i><span class="hidden md:block">&nbsp;&nbsp;Search</span></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div id="restuarants" class="grid grid-cols-1 md:grid-cols-3 gap-6 mr-[15%]"></div>
+      </div>
+      <div id="menu" class="pb-24 w-full animate-fade-in hidden">
+        <div class="relative w-full h-64 md:h-80">
+          <button id="back-btn"
+            class="absolute top-6 left-4 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg text-gray-800 hover:text-[#DC143C] transition-colors"><i
+              class="fas fa-arrow-left"></i></button>
+          <img id="menu-hero-img" src="" alt="Restaurant Cover" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent h-24"></div>
+        </div>
+
+        <div class="relative -mt-10 px-4 md:px-8 z-10 w-full max-w-4xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+            <div class="flex justify-between items-start mb-2">
+              <h2 id="menu-title" class="text-3xl font-bold text-gray-900">Title</h2>
+              <span id="menu-rating"
+                class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-lg text-sm font-bold text-gray-800"></span>
+            </div>
+            <p id="menu-desc" class="text-gray-600 mb-4 text-sm md:text-base">Desc</p>
+            <div class="flex gap-4 text-sm font-medium text-gray-500">
+              <span class="flex items-center gap-1"><i class="fas fa-clock"></i> 25-35 min</span>
+              <span class="flex items-center gap-1"><i class="fas fa-motorcycle"></i> Free Delivery</span>
+            </div>
           </div>
-          <p id="menu-desc" class="text-gray-600 mb-4 text-sm md:text-base">Desc</p>
-          <div class="flex gap-4 text-sm font-medium text-gray-500">
-            <span class="flex items-center gap-1"><i class="fas fa-clock"></i> 25-35 min</span>
-            <span class="flex items-center gap-1"><i class="fas fa-motorcycle"></i> Free Delivery</span>
-          </div>
         </div>
-      </div>
 
-      <div class="mt-8 px-4 md:px-8 max-w-4xl mx-auto">
-        <h3 class="text-xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">Full Menu</h3>
-        <div id="menu-items-container" class="flex flex-col gap-6"></div>
+        <div class="mt-8 px-4 md:px-8 max-w-4xl mx-auto">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">Full Menu</h3>
+          <div id="menu-items-container" class="flex flex-col gap-6"></div>
+        </div>
       </div>
-    </div>
-    <div id="vendor-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex flex-col md:flex-row overflow-hidden">
-    
-    <aside class="w-64 bg-white border-r border-gray-200 flex-col py-6 hidden md:flex shrink-0 z-10 shadow-sm">
-        <div class="px-6 mb-12">
-            <h1 class="text-2xl font-bold text-[#DC143C]">Vendors</h1>
-            <p class="text-sm text-gray-500 font-medium mt-1">Restaurant Portal</p>
-        </div>
-        <nav class="flex-1 space-y-2 px-2">
-            <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
-                <i class="fas fa-chart-pie mr-3"></i> Dashboard
-            </a>
-            <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
-                <i class="fas fa-receipt mr-3"></i> Orders
-            </a>
-        </nav>
-        <div class="px-4 mt-auto">
-            <button id="vendor-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-[#DC143C]/60 hover:bg-[#DC143C] transition-all active:scale-95 rounded-xl font-bold">
-                <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
-            </button>
-        </div>
+    </main>
+  </div>
+
+  <div id="vendor-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex flex-col md:flex-row overflow-hidden">
+
+    <aside id="vendor-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 h-full bg-white border-r border-gray-200 flex flex-col py-6 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out shadow-sm">
+      <button id="vendor-close-btn" class="md:hidden absolute top-4 right-4 p-2 text-gray-500 hover:text-red-500 text-xl"><i class="fas fa-times"></i></button>
+      
+      <div class="px-6 mb-12 mt-4 md:mt-0">
+        <h1 class="text-2xl font-bold text-[#DC143C]">Vendors</h1>
+        <p class="text-sm text-gray-500 font-medium mt-1">Restaurant Portal</p>
+      </div>
+      <nav class="flex-1 space-y-2 px-2">
+        <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
+          <i class="fas fa-chart-pie mr-3"></i> Dashboard
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
+          <i class="fas fa-receipt mr-3"></i> Orders
+        </a>
+      </nav>
+      <div class="px-4 mt-auto">
+        <button id="vendor-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-[#DC143C]/60 hover:bg-[#DC143C] transition-all active:scale-95 rounded-xl font-bold">
+          <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
+        </button>
+      </div>
     </aside>
 
     <main class="flex-1 h-full overflow-y-auto p-4 md:p-10 relative">
-        
-        <header class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
-            <div>
-                <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-4">Live Overview</p>
-                <select id="vendor-selector" class="text-xl md:text-xl font-medium text-gray-900 bg-transparent border-b-2 border-gray-300 pb-1 focus:outline-none focus:border-[#DC143C] cursor-pointer">
-                  </select>
-            </div>
-            <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm self-start md:self-auto">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
-                <span class="text-sm font-bold text-gray-700">Accepting Orders</span>
-            </div>
-        </header>
-
-        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
-            
-            <section class="xl:col-span-8 space-y-6">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-                        Active Queue <span id="vendor-queue-count" class="bg-red-100 text-[#DC143C] px-2 py-0.5 rounded-md text-sm">0</span>
-                    </h3>
-                </div>
-                
-                <div id="vendor-orders-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                </div>
-            </section>
-
-            <aside class="xl:col-span-4">
-                <div class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl flex flex-col h-[500px]">
-                    <div class="flex justify-between items-center mb-6 shrink-0">
-                        <h3 class="text-xl font-bold">Quick Menu</h3>
-                    </div>
-                    
-                    <div id="vendor-items-container" class="space-y-3 overflow-y-auto no-scrollbar pb-4 pr-2 flex-1">
-                    </div>
-                    
-                </div>
-            </aside>
+      <header class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
+        <div class="flex items-center gap-4">
+          <button id="vendor-menu-btn" class="md:hidden text-2xl text-gray-900 p-2">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div>
+            <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-1">Live Overview</p>
+            <select id="vendor-selector" class="text-xl md:text-xl font-medium text-gray-900 bg-transparent border-b-2 border-gray-300 pb-1 focus:outline-none focus:border-[#DC143C] cursor-pointer">
+            </select>
+          </div>
         </div>
+        <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm self-start md:self-auto hidden md:flex">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
+          <span class="text-sm font-bold text-gray-700">Accepting Orders</span>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+
+        <section class="xl:col-span-8 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+              Active Queue <span id="vendor-queue-count"
+                class="bg-red-100 text-[#DC143C] px-2 py-0.5 rounded-md text-sm">0</span>
+            </h3>
+          </div>
+
+          <div id="vendor-orders-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          </div>
+        </section>
+
+        <aside class="xl:col-span-4">
+          <div class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl flex flex-col h-[500px]">
+            <div class="flex justify-between items-center mb-6 shrink-0">
+              <h3 class="text-xl font-bold">Quick Menu</h3>
+            </div>
+
+            <div id="vendor-items-container" class="space-y-3 overflow-y-auto no-scrollbar pb-4 pr-2 flex-1">
+            </div>
+
+          </div>
+        </aside>
+      </div>
     </main>
-</div>
+  </div>
 
 
-    <!-- Rider -->
-    
-<div id="rider-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex overflow-hidden">
-    
+  <!-- Rider -->
+
+  <div id="rider-view" class="hidden fixed inset-0 z-[100] bg-gray-50 flex overflow-hidden">
+
     <!-- Sidebar -->
-    <aside id="rider-sidebar" class="md:translate-x-0 -translate-x-full fixed w-64 bg-white border-r border-gray-200 flex-col py-6 hidden md:flex shrink-0 z-10 shadow-sm">
-      <button id="rider-close-btn" class="md:hidden p-4"><i class="fas fa-times"></i></button>
-        <div class="px-6 mb-12">
-            <h1 class="text-2xl font-extrabold text-[#DC143C]">Bukka Rider</h1>
-            <p class="text-sm text-gray-500 font-medium mt-1">Dispatch Hub</p>
-        </div>
-        <nav class="flex-1 space-y-2 px-2">
-            <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
-                <i class="fas fa-motorcycle mr-3"></i> Active Deliveries
-            </a>
-            <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
-                <i class="fas fa-wallet mr-3"></i> Earnings
-            </a>
-        </nav>
-        <div class="px-4 mt-auto">
-            <button id="rider-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-gray-900 hover:bg-gray-800 transition-all active:scale-95 rounded-xl font-bold">
-                <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
-            </button>
-        </div>
+ <aside id="rider-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 h-full bg-white border-r border-gray-200 flex flex-col py-6 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out shadow-sm">
+      <button id="rider-close-btn" class="md:hidden absolute top-4 right-4 p-2 text-gray-500 hover:text-red-500 text-xl"><i class="fas fa-times"></i></button>
+      
+      <div class="px-6 mb-12 mt-4 md:mt-0">
+        <h1 class="text-2xl font-extrabold text-[#DC143C]">Bukka Rider</h1>
+        <p class="text-sm text-gray-500 font-medium mt-1">Dispatch Hub</p>
+      </div>
+      <nav class="flex-1 space-y-2 px-2">
+        <a class="flex items-center px-4 py-3 bg-red-50 text-[#DC143C] rounded-xl font-bold" href="#">
+          <i class="fas fa-motorcycle mr-3"></i> Active Deliveries
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 transition-all rounded-xl font-semibold" href="#">
+          <i class="fas fa-wallet mr-3"></i> Earnings
+        </a>
+      </nav>
+      <div class="px-4 mt-auto">
+        <button id="rider-logout-btn" class="w-full flex items-center justify-center px-4 py-3 text-white bg-gray-900 hover:bg-gray-800 transition-all active:scale-95 rounded-xl font-bold">
+          <i class="fas fa-sign-out-alt mr-2"></i> Exit Portal
+        </button>
+      </div>
     </aside>
 
     <!-- Main Canvas -->
     <main class="flex-1 h-full overflow-y-auto p-4 md:p-10 relative">
-        <header class="flex justify-between items-end mb-8">
-            <div>
-                <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-1">Dispatch Center</p>
-            </div>
-            <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
-                <span class="text-sm font-bold text-gray-700">Accepting Jobs</span>
-            </div>
-        </header>
-
-        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
-            <section class="xl:col-span-5 space-y-6">
-                <h3 class="text-lg font-bold text-gray-900">Available Near You</h3>
-                <div id="available-deliveries-container" class="flex flex-col gap-4"></div>
-            </section>
-            <section class="xl:col-span-7" id="active-task-wrapper">
-                <div id="active-task-container" class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[500px] flex flex-col"></div>
-            </section>
+      <header class="flex justify-between items-center mb-8">
+        <div class="flex items-center gap-4">
+          
+          <div>
+            <p class="text-sm font-bold text-[#DC143C] uppercase tracking-widest mb-1">Dispatch Center</p>
+          </div>
         </div>
+        <div class="flex items-center bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
+          <span class="hidden md:inline-block text-sm font-bold text-gray-700">Accepting Jobs</span>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+        <section class="xl:col-span-4 space-y-6">
+          <h3 class="text-lg font-bold text-gray-900">Available Near You</h3>
+          <div id="available-deliveries-container" class="flex flex-col gap-4"></div>
+        </section>
+        <section class="xl:col-span-7" id="active-task-wrapper">
+          <div id="active-task-container"
+            class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[500px] flex flex-col">
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- Success Toast -->
-    <div id="rider-toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-10 z-[110]">
-        <i class="fas fa-check-circle text-green-400"></i>
-        <span class="text-sm font-bold">Delivery completed successfully!</span>
+    <div id="rider-toast"
+      class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-10 z-[110]">
+      <i class="fas fa-check-circle text-green-400"></i>
+      <span class="text-sm font-bold">Delivery completed successfully!</span>
     </div>
-</div>  
-  </main>
-</div>
-<div id="cart-overlay" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity backdrop-blur-sm"></div>
-  
-  <div id="cart-panel" class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
-    
+  </div>
+
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity backdrop-blur-sm"></div>
+
+  <div id="cart-panel"
+    class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+
     <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
       <h2 class="text-2xl font-bold text-gray-900">Your Order</h2>
-      <button id="close-cart-btn" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-[#DC143C] transition-colors">
+      <button id="close-cart-btn"
+        class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-[#DC143C] transition-colors">
         <i class="fas fa-times"></i>
       </button>
     </div>
@@ -463,7 +573,8 @@
         <span class="font-medium">Total</span>
         <span id="cart-total-price" class="font-extrabold">$0.00</span>
       </div>
-      <button class="w-full bg-[#DC143C] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#b01030] transition-all transform active:scale-95 shadow-lg flex justify-between items-center px-6">
+      <button
+        class="w-full bg-[#DC143C] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#b01030] transition-all transform active:scale-95 shadow-lg flex justify-between items-center px-6">
         <span>Checkout</span>
         <i class="fas fa-arrow-right"></i>
       </button>
@@ -472,4 +583,5 @@
   </div>
   <script src="app.js"></script>
 </body>
+
 </html>

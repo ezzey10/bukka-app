@@ -294,7 +294,7 @@ class Cart {
 
     // 2. Calculate total price
     const totalPrice = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    this.cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+    this.cartTotalPrice.textContent = `₦${totalPrice.toFixed(2)}`;
 
     // 3. Draw the items inside the slide-out panel
     if (this.items.length === 0) {
@@ -311,7 +311,7 @@ class Cart {
         <img src="${item.img || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'}" class="w-16 h-16 object-cover rounded-lg">
         <div class="flex-1">
           <h4 class="font-bold text-gray-800 line-clamp-1">${item.name}</h4>
-          <p class="text-[#DC143C] font-bold">$${item.price.toFixed(2)}</p>
+          <p class="text-[#DC143C] font-bold">₦${item.price.toFixed(2)}</p>
         </div>
         <div class="flex items-center gap-3 bg-gray-50 px-3 py-1 rounded-lg border border-gray-200">
           <span class="font-bold text-gray-800">x${item.quantity}</span>
@@ -342,6 +342,24 @@ class VendorView {
   }
 
   init() {
+
+    const menuBtn = document.getElementById('vendor-menu-btn');
+    const closeBtn = document.getElementById('vendor-close-btn');
+    const sidebar = document.getElementById('vendor-sidebar');
+
+    if (menuBtn && sidebar) {
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+      });
+    }
+
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0');
+      });
+    }
     // Menu Toggles
     if (this.itemsContainer) {
       this.itemsContainer.addEventListener('change', (e) => {
@@ -782,7 +800,7 @@ class App {
     this.menuView = new MenuView(this.store, () => this.showHomeScreen(), (mealId) => this.handleAddToCart(mealId));
     this.vendorView = new VendorView(this.store, (resId, mealId) => this.store.toggleMealAvailability(resId, mealId));
     
-    // FIX: Pass the store to the RiderView
+    // Pass the store to the RiderView
     this.riderView = new RiderView(this.store); 
     
     this.currentRestaurantId = null; 
@@ -816,7 +834,7 @@ class App {
       if (getStartedBtn) {
         getStartedBtn.addEventListener('click', () => {
           landingPage.classList.add('hidden');
-          landingPage.classList.remove('flex'); 
+          // landingPage.classList.remove('flex'); 
           if (appContainer) appContainer.classList.remove('hidden');
           if (heroSearchForm) heroSearchForm.classList.add('hidden');
           this.showHomeScreen();
@@ -832,7 +850,7 @@ class App {
           if (appContainer) appContainer.classList.remove('hidden');
           if (landingPage) {
             landingPage.classList.add('hidden');
-            landingPage.classList.remove('flex');
+            // landingPage.classList.remove('flex');
           }
           
           this.showHomeScreen();
@@ -884,7 +902,7 @@ class App {
         vendorLoginBtn.addEventListener('click', () => {
           if (landingPage) {
             landingPage.classList.add('hidden');
-            landingPage.classList.remove('flex');
+            // landingPage.classList.remove('flex');
           }
           this.vendorView.show();
         });
@@ -895,7 +913,7 @@ class App {
           this.vendorView.hide();
           if (landingPage) {
             landingPage.classList.remove('hidden');
-            landingPage.classList.add('flex');
+            // landingPage.classList.add('flex');
           }
         });
       }
@@ -908,7 +926,7 @@ class App {
         riderLoginBtn.addEventListener('click', () => {
           if (landingPage) {
             landingPage.classList.add('hidden');
-            landingPage.classList.remove('flex');
+            // landingPage.classList.remove('flex');
           }
           this.riderView.show();
         });
@@ -919,7 +937,7 @@ class App {
           this.riderView.hide();
           if (landingPage) {
             landingPage.classList.remove('hidden');
-            landingPage.classList.add('flex');
+            // landingPage.classList.add('flex');
           }
         });
       }
@@ -956,11 +974,6 @@ class App {
     }
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const bukkaApp = new App();
-  bukkaApp.init();
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const bukkaApp = new App();
